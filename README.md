@@ -15,6 +15,17 @@
     - Once I have that set up I will need Mongo Express accessiable through browser in order to do that will create external Service that will allow external request to talk to the Pod
 ```
 
+## Minikube
+```
+  - Minikube is 1 Node cluster where Control Plane Processes and Worker Prococesses both run in 1 Node
+
+  - To install Minikube : ( https://minikube.sigs.k8s.io/docs/start/ )
+
+  - When Minkube Installed . To start Minikube minikube start --driver docker
+
+  - To interact with cluster I can use kubectl 
+```
+
 **1. Create MongoDB Deployment Yaml**
 ```
 ```
