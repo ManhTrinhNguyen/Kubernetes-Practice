@@ -146,6 +146,9 @@
 ```
 
 **Deploy Ingress Controller with Helm**
+
+<img width="400" alt="Screenshot 2025-02-25 at 15 08 53" src="https://github.com/user-attachments/assets/ecbe5393-3a1c-4f3c-aeff-608033ca2e95" />
+
 ```
   - Ingress Controller is to evaluate all rules that has defined in me Cluster. This way to manage all the redirections. This will be the Entryp point for the Cluster
 
@@ -169,13 +172,37 @@
 ```
   - Ingress is a API object that manage the external Request . It provide the Routing Rule to manage which pod should request redirect to
 
-  Step 1 :
-  
+  apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations: # this is the annotation that will be used by the Ingress Controller
+      kubernetes.io/ingress.class: nginx
+    name: mongo-express
+  spec: 
+    rules:
+    - host: 23-239-6-26.ip.linodeusercontent.com # Hostname that will be used to access the application
+      http: # Define the HTTP forwarding of request coming from host
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mongo-express-service
+                port:
+                  number: 8081
+
 ```
 
+Browser : hostname configure in Ingress Rule
+Hostname get resolved to extetnal IP of NodeBalancer
+Ingress Controller resolved the rule and forwared request to internal MongoExpress Service
 
+----Test UI : MongoExpress connected to MongoDB----
 
-
+I added some data to the MongoDB
+Then I delete the pod and restart them : kubectl scale --replicas=0 statefulset/mongodb - But the data still be there bcs I have configured PV - Then I scale back to 3
+To see my charts : helm ls
+If I done with the chart or reinstall or update I can use : helm uninstall mongodb
 
 
 
