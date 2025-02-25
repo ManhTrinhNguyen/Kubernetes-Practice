@@ -71,8 +71,6 @@
       2. Set root password : auth.rootPassword
       3. Configure Volume -> Helm Chart should use the StorageClass of Linode Cloud Storage
       4. Install the MongoDB chart : helm install mongodb --values helm-mongodb.yaml bitnami/mongodb
-
-  
 ```
 
 
