@@ -37,22 +37,22 @@
 ```
 
 **Create K8 Cluster on Linode**
+```
+  Step 1 : In the UI choose Kubernetes 
 
-    Step 1 : In the UI choose Kubernetes 
-  
-    Step 2 : 
-      - Choose Lable
-      - Region
-      - Kubernetes Version 
-      - Choose Node: Worker Node (Linode has already taken care of Control Plane . I don't need to set up Control Plane)
-      - Choose Shared CPU
-      - Choose Capacity 
-  
-    Step 3 : While Nodes are running 
-      - I need access credentials to access from my local machine so I download Kubeconfig credentials that Linode provided
-      - Change Permission to only my User can read from the file : `chmod 400 kubeconfig`
-      - Set kubeconfig.yaml as ENV `export KUBECONFIG=kubeconfig.yaml` -> Then my local machine connect to Nodes 
+  Step 2 : 
+    - Choose Lable
+    - Region
+    - Kubernetes Version 
+    - Choose Node: Worker Node (Linode has already taken care of Control Plane . I don't need to set up Control Plane)
+    - Choose Shared CPU
+    - Choose Capacity 
 
+  Step 3 : While Nodes are running 
+    - I need access credentials to access from my local machine so I download Kubeconfig credentials that Linode provided
+    - Change Permission to only my User can read from the file : `chmod 400 kubeconfig`
+    - Set kubeconfig.yaml as ENV `export KUBECONFIG=kubeconfig.yaml` -> Then my local machine connect to Nodes 
+```
 
 
 
