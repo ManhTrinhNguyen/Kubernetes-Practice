@@ -58,6 +58,21 @@
 ```
   Step 1 : Install Helm on Mac : brew install helm
 
+  Step 2 : Bitnami maintain MongoDB Helm Chart . I will install the Bitnami Repo : helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  Step 3 : To search Bitnami Repo : helm search repo bitnami -- Search for MongoDB helm chart in bitnami : helm search repo bitnami/mongodb
+
+  !!! !!! Note : When I execute helm command It is going to execute it against the Cluster that I am connected to
+
+  Step 4 : Installing the Chart
+    - When I am installing the chart there might be some value that I want to overwrite -> Chart provide some default value and I want to check what Parameters or Value I can overwrite:
+    - Example Yaml file that I want to overwrite some value : 
+      1. Define to run Statefulset with : architecture
+      2. Set root password : auth.rootPassword
+      3. Configure Volume -> Helm Chart should use the StorageClass of Linode Cloud Storage
+      4. Install the MongoDB chart : helm install mongodb --values helm-mongodb.yaml bitnami/mongodb
+
+  
 ```
 
 
