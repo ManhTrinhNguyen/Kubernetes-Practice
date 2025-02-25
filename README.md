@@ -147,6 +147,14 @@
 
 **Deploy Ingress Controller with Helm**
 ```
+  - Ingress Controller is to evaluate all rules that has defined in me Cluster. This way to manage all the redirections. This will be the Entryp point for the Cluster
+
+  - Ingress Cotroller uses some cloud native load balancer in the backgroud
+
+  - Linode's own Node balancer and Worker Node Balancer, that was dynamically created and provisioned as I created the Ingress Controller
+
+  - NodeBalancer is a EntryPoint for my Cluster . It proivde external IP, Port . Request will come first to NodeBlancer then go to Ingress Controller then go to Ingress Rules . Based on the Rules it will forward to which Service for that rule 
+
   1. Use Helm Chart for Ingress Controller (Nginx)
 
   2. Add Nginx repo: helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -157,7 +165,13 @@
   4. kubectl get pods : To check Ingress Controller running or not 
 ```
 
+**Deploy Ingress rules**
+```
+  - Ingress is a API object that manage the external Request . It provide the Routing Rule to manage which pod should request redirect to
 
+  Step 1 :
+  
+```
 
 
 
