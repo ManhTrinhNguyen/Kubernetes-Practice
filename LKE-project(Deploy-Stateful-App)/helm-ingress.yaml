@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations: # this is the annotation that will be used by the Ingress Controller
+    kubernetes.io/ingress.class: nginx
+  name: mongo-express
+spec: 
+  rules:
+  - host: 45-79-231-21.ip.linodeusercontent.com # Hostname that will be used to access the application . In real world scenario I will use a domain name
+    http: # Define the HTTP forwarding of request coming from host
+      paths:
+        - path: /
+          pathType: Prefix
+          backend: # This is a target service that will be used to forward the request
+            service:
+              name: mongo-express
+              port:
+                number: 8081
