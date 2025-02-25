@@ -54,6 +54,12 @@
     - Set kubeconfig.yaml as ENV `export KUBECONFIG=kubeconfig.yaml` -> Then my local machine connect to Nodes 
 ```
 
+**Deploy MongoDB with Statefulset with Helm**
+```
+  Step 1 : Install Helm on Mac : brew install helm
+
+```
+
 
 
 
