@@ -71,6 +71,19 @@
       2. Set root password : auth.rootPassword
       3. Configure Volume -> Helm Chart should use the StorageClass of Linode Cloud Storage
       4. Install the MongoDB chart : helm install mongodb --values helm-mongodb.yaml bitnami/mongodb
+
+    - After I execute helm install mongodb --values helm-mongodb.yaml bitnami/mongodb . It will install mongodb chart in my CLuster
+
+  Step 5 : Check My Cluster
+    - Check pod : kubectl get pod
+    - Check all : kubectl get all
+    - Check Secret : kubectl get secret
+      -> This Secret contain root password I provide in Yaml File
+
+  ----What Happen in the Background----
+  - What happen is when Statefulset was created for each pod, a physical storage was created for each of three pods
+  - And for each Physical Storage, a persistence volume was created and that is now attached to the Node where Pod is running 
+
 ```
 
 
