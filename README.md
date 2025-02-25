@@ -83,7 +83,66 @@
   ----What Happen in the Background----
   - What happen is when Statefulset was created for each pod, a physical storage was created for each of three pods
   - And for each Physical Storage, a persistence volume was created and that is now attached to the Node where Pod is running 
+```
 
+**Deploy MongExpress - UI for MongoDB**
+```
+  Step 1 : Create my own Configuration file for 1 Pod and 1 Service
+
+  Step 2 : Once Yaml file created I will create it in the Cluster : kubectl apply -f <yamlfile>
+
+      apiVersion: apps/v1
+      kind: Deployment 
+      metadata:
+        name: mongo-express
+        labels:
+          app: mongo-express
+      spec:
+        replicas: 1
+        selector: # This is the selector that will be used to match the labels of the pods
+          matchLabels:
+            app: mongo-express
+        template: # This is the pod template
+          metadata: # This is the metadata of the pod
+            labels:
+              app: mongo-express
+          spec:  # This is the specification of the pod
+            containers: # This is the container that will be running in the pod
+            - name: mongo-express # This is the name of the container
+              image: mongo-express # This is the image that will be used to create the container
+              ports: # This is the port that will be exposed by the container
+              - containerPort: 8081
+      
+              # This is Configuration use to connect to the MongoDB database
+              env: # This is the environment variables that will be used by the container
+              - name: ME_CONFIG_MONGODB_ADMINUSERNAME # This is the name of MongoDB root username
+                value: root
+              - name: ME_CONFIG_MONGODB_SERVER # This 
+                value: mongodb-0.mongodb-headless # This is a value of MongoDB server
+                # This is a endpoint where Mongo Express will connect to the MongoDB Pod . 
+                # mongdb-0 is the name of the MongoDB Pod and mongodb-headless is the name of the service that expose the MongoDB Pod
+              - name: ME_CONFIG_MONGODB_ADMINPASSWORD # This is the name of MongoDB root password and It is stored in the secret yaml file
+                # I use command kubectl get secret mongodb -o yaml to get name of the secret and key of the password
+                valueFrom:
+                  secretKeyRef:
+                    name: mongodb
+                    key: mongo-root-password
+      ---
+      # This is a Internal Service . Only accessible within the cluster
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: mongo-express-service
+      spec:
+        selector: # This is the selector that will be used to match the labels of the pods
+          app: mongo-express
+        ports: # This is the port that will be exposed by the service
+          - protocal: TCP
+            port: 8081 # This is the port that will be exposed by the service
+            targetPort: 8081 # This is the port that will be forwarded to the pods
+
+
+  Step 3 : I use to check that Mongo Express run correctly : kubectl logs <podname>
 ```
 
 
