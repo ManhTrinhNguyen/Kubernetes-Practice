@@ -145,6 +145,18 @@
   Step 3 : I use to check that Mongo Express run correctly : kubectl logs <podname>
 ```
 
+**Deploy Ingress Controller with Helm**
+```
+  1. Use Helm Chart for Ingress Controller (Nginx)
+
+  2. Add Nginx repo: helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+
+  3. Installing the Helm Chart : helm install [RELEASE_NAME] ingress-nginx/ingress-nginx --set controller.publishService.enabled=true
+      - --set controller.publishService.enabled=true : This attribute to make sure that we are automatically allocated the Public IP for my Ingress Address to use with Nginx
+
+  4. kubectl get pods : To check Ingress Controller running or not 
+```
+
 
 
 
