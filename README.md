@@ -37,8 +37,8 @@
 ```
 
 **Step by Step**
-
-  **Create K8 Cluster on Linode**
+```
+  ----Create K8 Cluster on Linode----
   
   Step 1 : In the UI choose Kubernetes 
 
@@ -54,7 +54,7 @@
     - I need access credentials to access from my local machine so I download Kubeconfig credentials that Linode provided
     - Change Permission to only my User can read from the file : `chmod 400 kubeconfig`
     - Set kubeconfig.yaml as ENV `export KUBECONFIG=kubeconfig.yaml` -> Then my local machine connect to Nodes 
-  
+```  
 
 
 
