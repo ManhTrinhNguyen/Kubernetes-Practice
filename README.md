@@ -71,6 +71,21 @@ Minikube has its own Docker so when Docker inside Minikube tries to pull that Im
 
 **Step 2 : Create Deployment**
   -- Pull Docker Image from Private Repo : `imagePullPolicy: always`
+  -- Configure Deployment with Secret : In the Pod's Specification same level as container
+      ```
+         imagePullSecrets :
+         - name: my-registry-key
+      ```
+
+!!! NOTE: Secret has to be in the same namespace as Deployment
+
+
+
+
+
+
+
+
 
 
 
