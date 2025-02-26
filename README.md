@@ -156,8 +156,24 @@ Step 3 : Create Misquitto Deployment with Volume
 
   - The Path value depend on the Application
 
-  - The concept of Mounting to the Pod then Mounting to the Container is useful for if I have multiple Container , I can decide which container get access to Which volumes that Pod has available 
+  - The concept of Mounting to the Pod then Mounting to the Container is useful for if I have multiple Container , I can decide which container get access to Which volumes that Pod has available
 
+Step 4 : After execute Mosquitto yaml with Volume 
+
+  - To check inside container : `kubectl exec -it <podname> -- /bin/sh`
+
+  - In `/mosquitto/config` I will see Secrect file haven't been there before with the value I provided in Secret
+
+  - Also in `/mosquitto/config/mosquitto.conf` get overwrited by my ConfigMap
+
+
+**Wrap up**
+
+- Both ConfigMap and Secrect can be used as Key-Value pair for the invidual ENV
+
+- Or I can Create File For them that I can pass in as Configuration File
+
+!!! Note : ConfigMap and Secret are Local Volume Type 
 
 
 
