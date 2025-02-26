@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mosquitto
+  labels:
+    app: mosquitto
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mosquitto
+  template:
+    metadata:
+      labels:
+        app: mosquitto
+    spec:
+        containers:
+          - name: mosquitto
+            image: eclipse-mosquitto:2.0
+            ports:
+              - containerPort: 1883
+
+            volumeMounts: # This is a list of volumes that I want to mount from Pod into the container
+              - name: mosquitto-config # This is the name of the volume
+                mountPath: /mosquitto/config # This is the path where I want to mount the volume
+              - name: mosquitto-secret
+                mountPath: /mosquitto/secret # If secret not exists, it will be created
+                readOnly: true # This is a read-only volume . Need for Certificates bcs i don't want to change them
+
+        volumes: # This is a list of volumes that I want to attach to the pod
+          - name: mosquitto-config # this is a name of the volume
+            configMap: # This is a type of the Volume I want to mount into the Pod
+              name: mosquitto-config-file # This is the name of the ConfigMap that I want to mount
+          # the same for secret 
+          - name: mosquitto-secret
+            secret:
+              secretName: mosquitto-secret-file 
