@@ -59,10 +59,15 @@ Minikube has its own Docker so when Docker inside Minikube tries to pull that Im
 
     -- I execute command `aws ecr get-login-password` to get Login password (A token use to login AWS)
     -- Then I ssh to Minikube `minikube ssh`
-    -- In /home/docker I execute `docker login --username AWS --p <AWS token> <URL to my AWS Repo>`
+    -- In /home/docker I execute `docker login --username AWS -p <AWS token> <URL to my AWS Repo>`
     -- I will use .docker/config.json inside minikube to create Secrect Component
 
-  --
+  ----Create Secret Component----
+  
+    -- Create Secret component file
+    -- Copy config.json file inside minikube to my Local Machine : `minikube cp minikube:/home/docker/.docker/config.json /users/trinhnguyen/.docker/config.json`
+    -- Turn config.json file into base 64 : `cat .docker/config.json | base64`
+    -- 
 
 
 
