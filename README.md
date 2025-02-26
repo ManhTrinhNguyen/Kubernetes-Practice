@@ -105,8 +105,58 @@ Step 2 : Create Mosquitto Deployment without Volume (To see default structure)
 
 Step 3 : Create Misquitto Deployment with Volume
 
+  - I will overwrite Mosquitto Config File using the ConfigMap by mounting it into the Container
 
+!!! Note: ConfigMap and Secret must exist before Pod start
 
+  ----To mount Volume into the Pod----
+  ```
+    containers:
+    - name: mosquitto
+      image: eclipse-mosquitto:2.0
+      ports:
+        - containerPort: 1883
+    volumes: # This is a list of volumes that I want to attach to the pod
+      - name: mosquitto-config # this is a name of the volume
+        configMap: # This is a type of the Volume I want to mount into the Pod
+          name: mosquitto-config-file # This is the name of the ConfigMap that I want to mount
+       
+      - name: mosquitto-secret # the same for secret  
+        secret:
+          secretName: mosquitto-secret-file
+  ```
+
+  ----Now I have volume in the Pod . I will mount it into the Container . Bcs Application run inside the Container----
+
+  - Inside Each individual Container:
+
+  ```
+  containers:
+    - name: mosquitto
+      image: eclipse-mosquitto:2.0
+      ports:
+        - containerPort: 1883
+
+      volumeMounts: # This is a list of volumes that I want to mount from Pod into the container
+        - name: mosquitto-config # This is the name of the volume
+          mountPath: /mosquitto/config # This is the path where I want to mount the volume
+        - name: mosquitto-secret
+          mountPath: /mosquitto/secret # If secret not exists, it will be created
+          readOnly: true # This is a read-only volume . Need for Certificates bcs i don't want to change them
+
+  volumes: # This is a list of volumes that I want to attach to the pod
+    - name: mosquitto-config # this is a name of the volume
+      configMap: # This is a type of the Volume I want to mount into the Pod
+        name: mosquitto-config-file # This is the name of the ConfigMap that I want to mount
+     
+    - name: mosquitto-secret # the same for secret  
+      secret:
+        secretName: mosquitto-secret-file
+  ```
+
+  - The Path value depend on the Application
+
+  - The concept of Mounting to the Pod then Mounting to the Container is useful for if I have multiple Container , I can decide which container get access to Which volumes that Pod has available 
 
 
 
