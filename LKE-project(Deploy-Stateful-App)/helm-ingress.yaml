@@ -6,7 +6,7 @@ metadata:
   name: mongo-express
 spec: 
   rules:
-  - host: 45-79-231-21.ip.linodeusercontent.com # Hostname that will be used to access the application . In real world scenario I will use a domain name
+  - host: 96-126-99-126.ip.linodeusercontent.com # Hostname that will be used to access the application . In real world scenario I will use a domain name
     http: # Define the HTTP forwarding of request coming from host
       paths:
         - path: /
