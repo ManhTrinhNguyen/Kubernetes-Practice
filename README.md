@@ -11,7 +11,7 @@
   apiVersion: v1
   kind: ConfigMap
   metadata:
-    name: mosquitto-config-file
+    name: config-file
   data: 
     database_url: mongodb-service # This is a key-value pair 
 ```
@@ -21,10 +21,49 @@
   apiVersion: v1
   kind: Secret
   metadata:
-    name: Secret
+    name: Secret-file
   data: 
-    username : <value in base62>
-    password : <Value in base62>
+    username : <value in base62> # This is a key-value pair
+    password : <Value in base62> # This is a key-value pair
 
 !!! Note: Value in Secret is Base62 encode 
 ```
+
+**Deployment/Pod references key-value from Secret and ConfigMap**
+```
+env:
+- name: MONGO_INITDB_ROOT_USERNAME
+  valueFrom:
+    secretKeyRef: # Reference Key-Value from Secret
+      name: Secret-file
+      key: username
+- name: MONGO_INITDB_ROOT_PASSWORD
+  valueFrom:
+    secretKeyRef: # Reference Key-Value from Secret
+      name: Secret-file
+      key: password
+- name: MONGO_DB_SERVER
+  valuefrom:
+    configMapKeyRef: # Reference Config-map From ConfigMap
+      name: config-file
+      key: database_url
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
