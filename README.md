@@ -95,7 +95,15 @@ Step 1 : Create ConfigMap and Secret for external Configuration
   - Or overwrite the Certificate file for Mosquitto
     
 
+Step 2 : Create Mosquitto Deployment without Volume (To see default structure)
 
+  - To get into the container : `kubectl exec -it <podname> -- bin/sh`
+
+  - Get into Mosquitto config : `cd /mosquitto/config | cat mosquitto.conf`
+
+  !!! After I can see the default (for learning purpose) I will delete that deployment 
+
+Step 3 : Create Misquitto Deployment with Volume
 
 
 
