@@ -67,7 +67,12 @@ Minikube has its own Docker so when Docker inside Minikube tries to pull that Im
     -- Create Secret component file
     -- Copy config.json file inside minikube to my Local Machine : `minikube cp minikube:/home/docker/.docker/config.json /users/trinhnguyen/.docker/config.json`
     -- Turn config.json file into base 64 : `cat .docker/config.json | base64`
-    -- 
+    -- I also can configure Secret using kubectl: `kubectl create secret generic my-generic-key --from-file-.dockerconfigjson=.docker/config.json --type=kubernetes.io/dockerconfigjson`
+
+**Step 2 : Create Deployment**
+  -- Pull Docker Image from Private Repo : `imagePullPolicy: always`
+
+
 
 
 
