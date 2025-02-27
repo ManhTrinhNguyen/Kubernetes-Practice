@@ -55,6 +55,7 @@
     - recommendationservice: gcr.io/google-samples/microservices-demo/recommendationservice:v0.8.0
 ```
 
+**Configure Deployment and Service for each Container**
 
 
 
