@@ -57,8 +57,41 @@
 
 **Configure Deployment and Service for each Container**
 
+- Basic setup
 
-
+```
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: xxxx
+spec
+  selector:
+    matchLabels:
+      app: xxxx
+  template:
+    metadata:
+      labels:
+        app: xxxx
+    spec: 
+      container:
+      - name: xxxx
+        image: xxxx
+        ports:
+        - containerPort: xxxx
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: xxxx
+spec: 
+  type: ClusterIP
+  selector:
+    app: xxxx
+  ports:
+  - protocol: TCP
+    port: xxxx
+    targetPort: xxxx
+```
 
 
 
