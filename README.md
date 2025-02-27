@@ -27,6 +27,17 @@
 **Visualize the whole Picture**
 
 <img width="600" alt="Screenshot 2025-02-17 at 14 36 17" src="https://github.com/user-attachments/assets/672c5bd8-d481-4bde-aa8b-65fe41943d8d" />
+```
+    - In the picture I can see which service connect to which service
+
+    - For example:
+
+        - Recommendation Service need to talk with ProductCatalog Service
+
+        - So Recommdation Service needs the ProductCatalog Services Endpoint = service name + service port and provide it in the Container ENV 
+
+    - The same thing for other services that connect to each other 
+```
 
 **Image of each Container**
 ```
