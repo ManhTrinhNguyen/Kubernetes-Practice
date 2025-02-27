@@ -24,3 +24,6 @@
     - In case of Message Broker and Services Mesh . I want to know application exactly they are using ? 
 ```
 
+**Visualize the whole Picture**
+
+<img width="600" alt="Screenshot 2025-02-17 at 13 07 30" src="https://github.com/user-attachments/assets/0c25986d-41fb-4454-9712-b5acf134c82a" />
