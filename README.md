@@ -35,7 +35,9 @@
 
         - Recommendation Service need to talk with ProductCatalog Service
 
-        - So Recommdation Service needs the ProductCatalog Services Endpoint = service name + service port and provide it in the Container ENV 
+        - So Recommdation Service needs the ProductCatalog Services Endpoint = service name + service port and provide it in the Container ENV
+
+        - The Reason Recommand Service can connect to ProductCalatoc Service by Endpoint is K8 built-in networking feature Internal DNS that allow Service can communicate with each other using human-readable-name . This make Service discovery within Cluster automate and Dynamic
 
     - The same thing for other services that connect to each other 
 ```
