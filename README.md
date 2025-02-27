@@ -2,13 +2,15 @@
 
 **Infomation need for Deploy Micro Apps**
 ```
-    What Micro Service I am deploy ?
+    - What Micro Service I am deploy ?
     
-    How Micro Service Connect to each other ?
+    - How Micro Service Connect to each other ?
     
-    Micro Service need any 3rd party service or Database ?
+    - Micro Service need any 3rd party service or Database ?
     
-    Which services is accessible outside the Cluster ?
+    - Which services is accessible outside the Cluster ?
+
+    - Which Port Apps are listening ? 
 ```
 
 **How Application communicate to Each other ?**
