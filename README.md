@@ -27,6 +27,7 @@
 **Visualize the whole Picture**
 
 <img width="600" alt="Screenshot 2025-02-17 at 14 36 17" src="https://github.com/user-attachments/assets/672c5bd8-d481-4bde-aa8b-65fe41943d8d" />
+
 ```
     - In the picture I can see which service connect to which service
 
@@ -40,6 +41,7 @@
 ```
 
 **Image of each Container**
+
 ```
     - emailservice: gcr.io/google-samples/microservices-demo/emailservice:v0.8.0
     - paymentservice: gcr.io/google-samples/microservices-demo/paymentservice:v0.8.0
