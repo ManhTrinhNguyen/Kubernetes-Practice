@@ -1,6 +1,10 @@
 # Deploy Microservices Applications 
 
-**The flow of **
+**The Project Flow**
+
+```
+    - External Request will go to Ingress Controller -> Ingress Controller evaluate for the rule defined in Ingress -> Ingress Controller will redirect the Request to a Target (Service) of the Frontend -> Service will send that request to the Pod 
+```
 
 **Infomation need for Deploy Micro Apps**
 ```
