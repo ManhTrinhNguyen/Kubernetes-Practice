@@ -152,12 +152,21 @@ spec:
     !!! NOTE: Ingress Controller is the one who run Ingress rules . Not Kubernetes
 ```
 
+## Best Practice for Project
 
+**Best Practice 1: Pinned tag version for each Container Image**
 
+**Best Practice 2: Liveness Probe for each container**
 
+```
+    - K8 managing its resources but not Container . How to let K8s know wheather the Applications inside the Pod is running ?
 
+    ----Perform Helth check with Liveness Probe----
 
+    - With Liveness Probe K8s will restart the Pod if the Applications crash or has issue
 
+    - In this Applications the developer has added small program can be check wheather the Application healthy or accessible . So I can use that in the Liveness Probe
+```
 
 
 
