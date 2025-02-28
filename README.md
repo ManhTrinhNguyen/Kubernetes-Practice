@@ -95,6 +95,57 @@ spec:
     targetPort: xxxx
 ```
 
+**Create Linode Cluser**
+
+```
+  Step 1 : In the UI choose Kubernetes 
+
+  Step 2 : 
+    - Choose Lable
+    - Region
+    - Kubernetes Version 
+    - Choose Node: Worker Node (Linode has already taken care of Control Plane . I don't need to set up Control Plane)
+    - Choose Shared CPU
+    - Choose Capacity 
+
+  Step 3 : While Nodes are running 
+    - I need access credentials to access from my local machine so I download Kubeconfig credentials that Linode provided
+    - Change Permission to only my User can read from the file : `chmod 400 kubeconfig`
+    - Set kubeconfig.yaml as ENV `export KUBECONFIG=kubeconfig.yaml` -> Then my local machine connect to Nodes 
+```
+
+**Create Ingress for External Request**
+
+----Ingress Controller----
+
+```
+    - Ingress Controller is another the Component in the Cluster to evaluate all the rules that defined in the Cluster . That way it can manage all the redirection . This will be an Entry point of the Cluster
+
+    - Ingress Controller use some Cloud load balancer in the background
+
+    - Linode'own Node Balancer and Worker Node Balancer , that was dynamically created and provisioned as I created the Ingress Controller 
+
+    1. I use Helm Chart to create Nginx Ingress Controller
+
+    2. Add Ingress Controller (Nginx) Repo to Helm . helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+
+    3. Installing the Helm chart : helm install [RELEASE_NAME] ingress-nginx/ingress-nginx --set controller.publishService.enabled=true
+```
+
+----Ingress Configuration----
+
+```
+    - Ingress is a API Object that manage external request to Services . It provide the routing rules so Cluster will know which Request go to which Pod
+
+    - Ingress support multiple hostname
+
+    - Ingress can handle TLS (SSL) termination for HTTPS
+
+    - Ingress support Path Routing
+
+    !!! NOTE: Ingress Controller is the one who run Ingress rules . Not Kubernetes
+```
+
 
 
 
