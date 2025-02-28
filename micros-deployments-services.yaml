@@ -1,5 +1,5 @@
 # Email service
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: emailservice
@@ -12,14 +12,16 @@ spec:
       labels:
         app: emailservice
     spec: 
-      container:
+      containers:
       - name: emailservice
         image: gcr.io/google-samples/microservices-demo/emailservice:v0.8.0
         ports:
         - containerPort: 8080
-      env:
-      - name: PORT
-        value: "8080"
+        env:
+        - name: PORT
+          value: "8080"
+        - name: DISABLE_PROFILER
+          value: "1"
 ---
 apiVersion: v1
 kind: Service
@@ -50,7 +52,7 @@ spec:
       labels:
         app: recommendationservice
     spec: 
-      container:
+      containers:
       - name: recommendationservice
         image: gcr.io/google-samples/microservices-demo/recommendationservice:v0.8.0
         ports:
@@ -89,7 +91,7 @@ spec:
       labels:
         app: productcatalogservice
     spec:
-      container:
+      containers:
       - name: productcatalogservice
         image: gcr.io/google-samples/microservices-demo/productcatalogservice:v0.8.0
         ports:
@@ -126,7 +128,7 @@ spec:
       labels: 
         app: cartservice
     spec: 
-      container:
+      containers:
       - name: cartservice
         image: gcr.io/google-samples/microservices-demo/cartservice:v0.8.0
         ports:
@@ -166,7 +168,7 @@ spec:
       labels:
         app: redis
     spec:
-      container:
+      containers:
       - name: redis
         image: redis
         ports:
@@ -174,7 +176,7 @@ spec:
         volumeMounts:
         - name: redis-data
           mountPath: /data
-      volume:
+      volumes:
       - name: redis-data
         emptyDir: {} # One of the volume types
 ---
@@ -206,7 +208,7 @@ spec:
       labels:
         app: paymentservice
     spec:
-      container:
+      containers:
       - name: paymentservice
         image: gcr.io/google-samples/microservices-demo/paymentservice:v0.8.0
         ports:
@@ -214,6 +216,8 @@ spec:
         env:
         - name: PORT
           value: "50051"
+        - name: DISABLE_PROFILER
+          value: "1"
 
 ---
 apiVersion: v1
@@ -244,7 +248,7 @@ spec:
       labels:
         app: shippingservice
     spec:
-      container:
+      containers:
       - name: shippingservice
         image: gcr.io/google-samples/microservices-demo/shippingservice:v0.8.0
         ports:
@@ -281,7 +285,7 @@ spec:
       labels:
         app: adservice
     spec:
-      container:
+      containers:
       - name: adservice
         image: gcr.io/google-samples/microservices-demo/adservice:v0.8.0
         ports:
@@ -291,7 +295,7 @@ spec:
           value: "9555"
 ---
 apiVersion: v1
-kind: Service:
+kind: Service
 metadata:
   name: adservice
 spec:
@@ -318,7 +322,7 @@ spec:
       labels:
         app: currencyservice
     spec:
-      container:
+      containers:
       - name: currencyservice
         image: gcr.io/google-samples/microservices-demo/currencyservice:v0.8.0
         ports:
@@ -326,6 +330,8 @@ spec:
         env:
         - name: PORT
           value: "7000"
+        - name: DISABLE_PROFILER
+          value: "1"
 ---
 apiVersion: v1
 kind: Service
@@ -354,7 +360,7 @@ spec:
       labels:
         app: checkoutservice
     spec:
-      container:
+      containers:
       - name: checkoutservice
         image: gcr.io/google-samples/microservices-demo/checkoutservice:v0.8.0
         ports:
@@ -402,7 +408,7 @@ spec:
       labels:
         app: frontend
     spec:
-      container:
+      containers:
       - name: frontend
         image: gcr.io/google-samples/microservices-demo/frontend:v0.8.0
         ports:

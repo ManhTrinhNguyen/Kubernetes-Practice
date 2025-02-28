@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: 45-79-230-40.ip.linodeusercontent.com # This could be valid domain name
+    http:
+      paths:
+        - path: / # This is the path that will be used to access the service
+          pathType: Prefix
+          backend: # This is a target service that will used to forward the request
+            service:
+              name: frontend
+              port:
+                number: 80
