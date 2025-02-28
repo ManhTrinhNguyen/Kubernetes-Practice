@@ -17,6 +17,14 @@ spec:
         image: gcr.io/google-samples/microservices-demo/emailservice:v0.8.0
         ports:
         - containerPort: 8080
+        livenessProbe:
+          grpc:
+            port: 8080
+          periodSeconds: 5
+        readinessProbe:
+          grpc:
+            port: 8080
+          periodSeconds: 5
         env:
         - name: PORT
           value: "8080"
@@ -57,6 +65,14 @@ spec:
         image: gcr.io/google-samples/microservices-demo/recommendationservice:v0.8.0
         ports:
         - containerPort: 8080
+        livenessProbe:
+          grpc:
+            port: 8080
+          periodSeconds: 5
+        readinessProbe:
+          grpc:
+            port: 8080
+          periodSeconds: 5
         env:
         - name: PORT
           value: "8080"
@@ -96,6 +112,14 @@ spec:
         image: gcr.io/google-samples/microservices-demo/productcatalogservice:v0.8.0
         ports:
         - containerPort: 3550
+        livenessProbe:
+          grpc:
+            port: 3550
+          periodSeconds: 5
+        readinessProbe:
+          grpc:
+            port: 3550
+          periodSeconds: 5
         env:
         - name: PORT
           value: "3550"
@@ -133,6 +157,14 @@ spec:
         image: gcr.io/google-samples/microservices-demo/cartservice:v0.8.0
         ports:
         - containerPort: 7070
+        livenessProbe:
+          grpc:
+            port: 7070
+          periodSeconds: 5
+        readinessProbe:
+          grpc:
+            port: 7070
+          periodSeconds: 5
         env: 
         - name: PORT
           value: "7070"
@@ -170,9 +202,19 @@ spec:
     spec:
       containers:
       - name: redis
-        image: redis
+        image: redis:7.4.2
         ports:
         - containerPort: 6379
+        livenessProbe:
+          initialDelaySeconds: 5
+          tcpSocket:
+            port: 6379
+          periodSeconds: 5
+        readinessProbe:
+          initialDelaySeconds: 5
+          tcpSocket:
+            port: 6379
+          periodSeconds: 5
         volumeMounts:
         - name: redis-data
           mountPath: /data
@@ -213,6 +255,14 @@ spec:
         image: gcr.io/google-samples/microservices-demo/paymentservice:v0.8.0
         ports:
         - containerPort: 50051
+        livenessProbe:
+          grpc:
+            port: 50051
+          periodSeconds: 5
+        readinessProbe:
+          grpc:
+            port: 50051
+          periodSeconds: 5
         env:
         - name: PORT
           value: "50051"
@@ -253,6 +303,14 @@ spec:
         image: gcr.io/google-samples/microservices-demo/shippingservice:v0.8.0
         ports:
         - containerPort: 50051
+        livenessProbe:
+          grpc:
+            port: 50051
+          periodSeconds: 5
+        readinessProbe:
+          grpc:
+            port: 50051
+          periodSeconds: 5
         env:
         - name: PORT
           value: "50051"
@@ -290,6 +348,14 @@ spec:
         image: gcr.io/google-samples/microservices-demo/adservice:v0.8.0
         ports:
         - containerPort: 9555
+        livenessProbe:
+          grpc:
+            port: 9555
+          periodSeconds: 5
+        readinessProbe:
+          grpc:
+            port: 9555
+          periodSeconds: 5
         env:
         - name: PORT
           value: "9555"
@@ -327,6 +393,14 @@ spec:
         image: gcr.io/google-samples/microservices-demo/currencyservice:v0.8.0
         ports:
         - containerPort: 7000
+        livenessProbe:
+          grpc:
+            port: 7000
+          periodSeconds: 5
+        readinessProbe:
+          grpc:
+            port: 7000
+          periodSeconds: 5
         env:
         - name: PORT
           value: "7000"
@@ -365,6 +439,14 @@ spec:
         image: gcr.io/google-samples/microservices-demo/checkoutservice:v0.8.0
         ports:
         - containerPort: 5050
+        livenessProbe:
+          grpc:
+            port: 5050
+          periodSeconds: 5
+        readinessProbe:
+          grpc:
+            port: 5050
+          periodSeconds: 5
         env:
         - name: PORT
           value: "5050"
@@ -413,6 +495,16 @@ spec:
         image: gcr.io/google-samples/microservices-demo/frontend:v0.8.0
         ports:
         - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: "/_healthz"
+            port: 8080
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: "/_healthz"
+            port: 8080
+          periodSeconds: 5
         env:
         - name: PORT
           value: "8080"
