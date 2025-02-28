@@ -168,6 +168,16 @@ spec:
     - In this Applications the developer has added small program can be check wheather the Application healthy or accessible . So I can use that in the Liveness Probe
 ```
 
+**Best Practice 3: ReadinessProbe for each Container**
+
+```
+    - LivenessProbe help K8s see that Application running successfuly only After the Application started
+
+    - ReadinessProbe help K8s see that Appliocation running successfully during the Application startup
+
+    - ReadinessProbe Let's K8s know if Application is ready to recevice traffic
+```    
+
 
 
 
