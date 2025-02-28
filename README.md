@@ -166,6 +166,11 @@ spec:
     - With Liveness Probe K8s will restart the Pod if the Applications crash or has issue
 
     - In this Applications the developer has added small program can be check wheather the Application healthy or accessible . So I can use that in the Liveness Probe
+
+    - All the Microservices in this Apps using gRPC protocol that why I configured gRPC protocol for it
+
+    - But for Redis I use tpcSocket . The alternative of gRPC protocol
+        - With tpcSocket the Kubelet will attempt to open socket to my container on that container Port . If it succeeds to establish a connection on this Port the container is considered to be healthy 
 ```
 
 **Best Practice 3: ReadinessProbe for each Container**
