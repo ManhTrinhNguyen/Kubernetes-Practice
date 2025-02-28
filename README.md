@@ -158,6 +158,8 @@ spec:
 
 **Best Practice 2: Liveness Probe for each container**
 
+<img width="600" alt="Screenshot 2025-02-28 at 12 38 44" src="https://github.com/user-attachments/assets/394985be-0327-4bdf-aa9a-096e019ef3db" />
+
 ```
     - K8 managing its resources but not Container . How to let K8s know wheather the Applications inside the Pod is running ?
 
@@ -170,10 +172,14 @@ spec:
     - All the Microservices in this Apps using gRPC protocol that why I configured gRPC protocol for it
 
     - But for Redis I use tpcSocket . The alternative of gRPC protocol
-        - With tpcSocket the Kubelet will attempt to open socket to my container on that container Port . If it succeeds to establish a connection on this Port the container is considered to be healthy 
+        - With tpcSocket the Kubelet will attempt to open socket to my container on that container Port . If it succeeds to establish a connection on this Port the container is considered to be healthy
+
+    - Third Options is check HTTPS endpoint : If Application has endpoint inside App that expose the health status of Application itself . I could hit that endpoint to check wheather application is healthy or not. This Configuration will tell Kubelet there is an HTTP endpoint on the Application on this Port and this URL I can check wheather the URL healthy or not 
 ```
 
 **Best Practice 3: ReadinessProbe for each Container**
+
+<img width="600" alt="Screenshot 2025-02-28 at 12 38 44" src="https://github.com/user-attachments/assets/c2e809fc-7d98-4e5f-a411-cb35f3098d83" />
 
 ```
     - LivenessProbe help K8s see that Application running successfuly only After the Application started
@@ -181,6 +187,11 @@ spec:
     - ReadinessProbe help K8s see that Appliocation running successfully during the Application startup
 
     - ReadinessProbe Let's K8s know if Application is ready to recevice traffic
+
+     - But for Redis I use tpcSocket . The alternative of gRPC protocol
+            - With tpcSocket the Kubelet will attempt to open socket to my container on that container Port . If it succeeds to establish a connection on this Port the container is considered to be healthy
+    
+        - Third Options is check HTTPS endpoint : If Application has endpoint inside App that expose the health status of Application itself . I could hit that endpoint to check wheather application is healthy or not. This Configuration will tell Kubelet there is an HTTP endpoint on the Application on this Port and this URL I can check wheather the URL healthy or not 
 ```    
 
 
