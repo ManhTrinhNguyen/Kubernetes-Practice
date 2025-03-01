@@ -214,6 +214,23 @@ spec:
     - Request will first go to Cloud Provider Load balancer -> Then go to the Ingress Controller -> Ingress Controller will evaluate all the rules in the Cluster -> If the request is good it will redirect to Service -> Then Service will send the request to Pod by using KubeProxy
 ```
 
+**Best Practice 7: More than 1 Replica for Deployment**
+
+```
+    - If I pod died , there will be another Pod available | No Downtime
+```
+
+**Best Practice 8: More Than 1 Worker Node in the Cluster**
+
+```
+    - If Server crashed or reboot , My Application will not be accessible
+
+    - Ideally I want each Replica to run on different Node . So I can have backup 
+```
+
+**Best Practice 9: Using Label**
+
+**Best Practice 10: Using Namespace to isolate resources**
 
 
 
