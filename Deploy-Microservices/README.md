@@ -200,6 +200,19 @@ spec:
     - Make sure my Application has enough resources to run
 ```
 
+**Best Practice 5: Resources Limit Container**
+
+```
+    - If not limit Container could take all resources of the Pod . Bcs sometime it has bugs or ininity loop
+```
+
+**Best Practice 6: Don't expose NodePort**
+
+```
+    - I use Ingress and Load Balancer
+
+    - Request will first go to Cloud Provider Load balancer -> Then go to the Ingress Controller -> Ingress Controller will evaluate all the rules in the Cluster -> If the request is good it will redirect to Service -> Then Service will send the request to Pod by using KubeProxy
+```
 
 
 
