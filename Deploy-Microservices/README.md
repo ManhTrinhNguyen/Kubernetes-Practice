@@ -194,8 +194,11 @@ spec:
         - Third Options is check HTTPS endpoint : If Application has endpoint inside App that expose the health status of Application itself . I could hit that endpoint to check wheather application is healthy or not. This Configuration will tell Kubelet there is an HTTP endpoint on the Application on this Port and this URL I can check wheather the URL healthy or not 
 ```    
 
+**Best Practice 4: Resources Request for Each Container**
 
-
+```
+    - Make sure my Application has enough resources to run
+```
 
 
 
