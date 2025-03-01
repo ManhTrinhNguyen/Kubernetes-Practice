@@ -232,6 +232,35 @@ spec:
 
 **Best Practice 10: Using Namespace to isolate resources**
 
+**Best Practice 11 (Security): Ensure Image are free vulnerability**
 
+```
+    - This can happen when I using Library or tools that has soe Vulnerability for my Application inside the Container
+
+    - Manually Scan vulnerability on Image
+
+    - Or Automated scan on build Pipeline
+```
+
+**Best Practice 12 (Security): No root User for Container**
+
+```
+    - Make sure that I don't have container running in my Cluster have root access capablity
+
+    - This exposed security risk bcs a container with root access can access more resources and do much more on host where it is running
+
+    - Most official Image Do not use root user however some Non official Image may use root user
+```
+
+**Best Practice 13 (Security): Update K8 to latest Version**
+
+```
+  - Important Security Fixed
+
+  - Bug fixed
+
+  ----Update K8 Version Node by Node----
+  - To avoild Application downtime 
+```
 
 
