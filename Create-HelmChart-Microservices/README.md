@@ -104,11 +104,33 @@ spec:
       type: {{ .Values.serviceType }}
 ```
 
+**Dynamic ENV**
 
+- For one single ENV I can have container ENV var like this :
+  
+```
+env: 
+- name: {{ .Values.containerEnvVar.key }}
+  value: {{ .Values.containerEnvVar.value }}
+```
 
+- For working with List of something . In this case ENV, Helm has built a function called Range
 
+- Range is basically loop through a List and give me element one by one
 
+- Syntax for Range . This way I can access the key value pair that I define in the Container Env var list
 
+```
+env:
+{{-range .Values.containerEnvVars}}
+- name: {{ .key }}
+  value: {{ .value | quote }}
+{{-end}}
+
+Note: Value ENV variable alway interpreted as strings . So I use a built-in function called quote and will use piping syntax |
+
+- Piping syntax in Linux : is the way to pass Output of 1 command to other Input of other command
+```
 
 
 
