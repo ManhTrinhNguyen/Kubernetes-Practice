@@ -37,7 +37,10 @@
    
     - This is where actual K8s Yaml file created
    
-    - .yaml file : The attribute same as in the K8s Service configuration file . Instead of hardcode value I have placeholder defined as {{}} the value of this syntax are actually the placeholder to actual Value 
+    - .yaml file : The attribute same as in the K8s Service configuration file . Instead of hardcode value I have placeholder defined as {{}} the value of this syntax are actually the placeholder to actual Value
+   
+  - **value.yaml**
+    - This is a place where the acutal value are set will be then substitued in the template file   
 
 
 
