@@ -40,7 +40,69 @@
     - .yaml file : The attribute same as in the K8s Service configuration file . Instead of hardcode value I have placeholder defined as {{}} the value of this syntax are actually the placeholder to actual Value
    
   - **value.yaml**
-    - This is a place where the acutal value are set will be then substitued in the template file   
+    - This is a place where the acutal value are set will be then substitued in the template file
+
+**Deployment**
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appName }}
+  labels:
+    app: {{ .Values.appName }}
+spec: 
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.appName }}
+    template:
+      metadata:
+        labels:
+          app: {{ .Values.appName }}
+          spec: 
+            containers:
+            - name: {{ .Values.appName }}
+              image: {{ .Values.appImage }}:{{ .Values.appVersion }}
+              ports:
+              - containerPort: {{ .Values.containerPort }}
+              livenessProbe:
+                {{ -toYaml .Values.livenessProbe | nindent 12 }} # toYaml is a function that converts the livenessProbe to yaml format
+              readinessProbe:
+                {{.Values.readinessProbe }}
+              resources:
+                requests: 
+                  memory: {{ .Values.memoryRequest }}
+                  cpu: {{ .Values.cpuRequest }}
+                limits:
+                  memory: {{ .Values.memoryLimit }}
+                  cpu: {{ .Values.cpuLimit }}
+              env: 
+              {{ -range .Values.containerEnvVars }}
+              - name: {{ .key }}
+                value: {{ .value | quote }}
+              {{ -end }}                
+
+```
+
+**Service**
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.appName }}
+  labels:
+    app: {{ .Values.appName }}
+spec:
+  selector:
+    app: {{ .Values.appName }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.servicePort}}
+      targetPort: {{ .Values.containerPort }}
+      type: {{ .Values.serviceType }}
+```
 
 
 
