@@ -65,6 +65,10 @@
 
   - Step 3 : Set Values for those Deployment and Serivce . Also for Redis
 
+  ```
+    - In Values file : Set value to <name-of-the-value> 
+  ```
+
   - Step 4 : Validate Template File
 
     -- Using: `helm template -f <value-file> <name-of-helm-chart>` | Give me nice preview from all the values sources
