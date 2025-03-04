@@ -132,7 +132,7 @@ Note: Value ENV variable alway interpreted as strings . So I use a built-in func
 - Piping syntax in Linux : is the way to pass Output of 1 command to other Input of other command
 ```
 
-**Create values file Example**
+**Create values file Example (Default Value in the Chart)**
 
 ```
 appName: emailservice
@@ -173,6 +173,8 @@ cpuLimit: 500m
 - `helm install -f <value file> <release-name> <chart name> --namespace microservices` 
 
 - To delete : `helm delete <release-name>`
+
+**Create Value for all the micro-services**
 
 
 
