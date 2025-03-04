@@ -42,6 +42,27 @@
   - **value.yaml**
     - This is a place where the acutal value are set will be then substitued in the template file
 
+**Overview**
+
+  - Step 1 : I create Helmchart for all Microservices and Redis
+    - Redis have to be separate bcs Redis has different configuration
+   
+  - Step 2 : Cofigure Deployment and Service in those Helm Chart
+
+  - Step 3 : Set Values for those Deployment and Serivce . Also for Redis
+
+  - Step 4 : Validate Template File
+
+    -- Using: `helm template -f <value-file> <name-of-helm-chart>` | Give me nice preview from all the values sources
+    
+    -- Another the way to Validate values yamle file : `helm lint <value-file> <chart-name>`
+
+  - Step 5 : Deploy Helm Chart
+
+    -- `helm install -f <value file> <release-name> <chart name> --namespace microservices` 
+    
+    -- To delete : `helm delete <release-name>`
+
 **Deployment**
 
 ```
@@ -162,19 +183,12 @@ memoryLimit: 128Mi
 cpuLimit: 500m
 ```
 
-**Validate Template File**
+- Then I will create value for all Micro-services
+- 
 
-- Using: `helm template -f <value-file> <name-of-helm-chart>` | Give me nice preview from all the values sources
 
-- Another the way to Validate values yamle file : `helm lint <value-file> <chart-name>`
 
-**Deploy Helm Chart**
 
-- `helm install -f <value file> <release-name> <chart name> --namespace microservices` 
-
-- To delete : `helm delete <release-name>`
-
-**Create Value for all the micro-services**
 
 
 
