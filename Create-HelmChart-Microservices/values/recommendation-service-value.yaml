@@ -1,0 +1,26 @@
+appName: recommendationservice
+replicasCount: 2
+appImage: gcr.io/google-samples/microservices-demo/recommendationservice
+appVersion: v0.8.0
+containerPort: 8080
+servicePort: 8080
+serviceType: ClusterIP
+containerEnvVars: 
+  - name: PORT
+    value: "8080"
+  - name: PRODUCT_CATALOG_SERVICE_ADDR
+    value: "productcatalogservice:3550"
+  - name: DISABLE_PROFILER
+    value: "1"
+livenessProbe:
+  grpc:
+    port: 8080
+  periodSeconds: 5
+readinessProbe:
+  grpc:
+    port: 8080
+  periodSeconds: 5
+memoryRequest: 100Mi
+cpuRequest: 100m
+memoryLimit: 128Mi
+cpuLimit: 500m

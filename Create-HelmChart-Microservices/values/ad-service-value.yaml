@@ -1,0 +1,24 @@
+appName: adservice
+replicasCount: 2
+appImage: gcr.io/google-samples/microservices-demo/adservice
+appVersion: v0.8.0
+containerPort: 9555
+servicePort: 9555
+serviceType: ClusterIP
+containerEnvVars: 
+  - name: PORT
+    value: "9555"
+  - name: DISABLE_PROFILER
+    value: "1"
+livenessProbe:
+  grpc:
+    port: 9555
+  periodSeconds: 5
+readinessProbe:
+  grpc:
+    port: 9555
+  periodSeconds: 5
+memoryRequest: 64Mi
+cpuRequest: 250m
+memoryLimit: 128Mi
+cpuLimit: 500m

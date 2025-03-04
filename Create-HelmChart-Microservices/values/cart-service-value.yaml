@@ -1,0 +1,24 @@
+appName: cartservice
+replicasCount: 2
+appImage: gcr.io/google-samples/microservices-demo/cartservice
+appVersion: v0.8.0
+containerPort: 7070
+servicePort: 7070
+serviceType: ClusterIP
+containerEnvVars: 
+  - name: PORT
+    value: "7070"
+  - name: REDIS_ADDR
+    value: "redis:6379"
+livenessProbe:
+  grpc:
+    port: 7070
+  periodSeconds: 5
+readinessProbe:
+  grpc:
+    port: 7070
+  periodSeconds: 5
+memoryRequest: 64Mi
+cpuRequest: 250m
+memoryLimit: 128Mi
+cpuLimit: 500m

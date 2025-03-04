@@ -1,0 +1,22 @@
+appName: productcatalogservice
+replicasCount: 2
+appImage: gcr.io/google-samples/microservices-demo/productcatalogservice
+appVersion: v0.8.0
+containerPort: 3550
+servicePort: 3550
+serviceType: ClusterIP
+containerEnvVars: 
+  - name: PORT
+    value: "3550"
+livenessProbe:
+  grpc:
+    port: 3550
+  periodSeconds: 5
+readinessProbe:
+  grpc:
+    port: 3550
+  periodSeconds: 5
+memoryRequest: 64Mi
+cpuRequest: 250m
+memoryLimit: 128Mi
+cpuLimit: 500m
