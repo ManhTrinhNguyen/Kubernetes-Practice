@@ -132,6 +132,66 @@ Note: Value ENV variable alway interpreted as strings . So I use a built-in func
 - Piping syntax in Linux : is the way to pass Output of 1 command to other Input of other command
 ```
 
+**Create values file Example**
+
+```
+appName: emailservice
+replicasCount: 2
+appImage: gcr.io/google-samples/microservices-demo/emailservice
+appVersion: v0.8.0
+containerPort: 8080
+servicePort: 8080
+serviceType: ClusterIP
+containerEnvVars: 
+  - name: PORT
+    value: "8080"
+  - name: DISABLE_PROFILER
+    value: "1"
+livenessProbe:
+  grpc:
+    port: 8080
+  periodSeconds: 5
+
+readinessProbe:
+  grpc:
+    port: 8080
+  periodSeconds: 5
+memoryRequest: 64Mi
+cpuRequest: 250m
+memoryLimit: 128Mi
+cpuLimit: 500m
+```
+
+**Validate Template File**
+
+- Using: `helm template -f <value-file> <name-of-helm-chart>` | Give me nice preview from all the values sources
+
+- Another the way to Validate values yamle file : `helm lint <value-file> <chart-name>`
+
+**Deploy Helm Chart**
+
+- `helm install -f <value file> <release-name> <chart name> --namespace microservices` 
+
+- To delete : `helm delete <release-name>`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   
