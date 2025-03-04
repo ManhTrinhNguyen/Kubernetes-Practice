@@ -45,9 +45,18 @@
 **Overview**
 
   - Step 1 : I create Helmchart for all Microservices and Redis
-    - Redis have to be separate bcs Redis has different configuration
+  - 
+    -- Syntax to create Helm Chart: `helm create <helmchart-name>` 
+    -- Redis have to be separate bcs Redis has different configuration
    
   - Step 2 : Cofigure Deployment and Service in those Helm Chart
+    
+    -- Instead of hardcode Value I use this syntax for dynamically Values : `{{ .Values.<name-of-the-value>}}`
+    
+    -- This syntax is to configure LivenessProbe and ReadinessProbe or anything need correct Yaml Format : `{{- toYaml .Values.livenessProbe | nindent 12 }}`
+
+      --- toYaml : Ensure the LivenessProbe or RedinessProbe is properly formatted instead of being rendered as a single-line string
+      --- nindent 12 : Helm Template require correct indention inside deployment.yaml , and `nindent 12` correctly format it at 12 spaces 
 
   - Step 3 : Set Values for those Deployment and Serivce . Also for Redis
 
