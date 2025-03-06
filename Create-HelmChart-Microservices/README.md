@@ -92,13 +92,24 @@
     -- Install Helmfile : `brew install helmfile`
 
     -- `helm file sync` :
+    
       --- Prepare all the Release 
       --- It will then compare the acutal State in the Cluster with the desired state that I configured in Helmfile
       --- Base on that It will plan what need to be install and deployed in the Cluster to give me a desire State 
 
     -- `helm list` : Which show me at any point the currently installed released that Helmfile manage for me 
       
+    - Step 7 : Helmfile Configuration 
 
+    ```
+    releases:
+    - name: my-app
+      namespace: default
+      chart: stable/nginx
+      version: 1.2.3
+      values:
+        - values.yaml
+    ```
 **Deployment**
 
 ```
