@@ -81,6 +81,24 @@
     
     -- To delete : `helm delete <release-name>`
 
+  - Step 6 : Create Helmfile
+
+  ```
+    - Helmfile is a tool that helps me manage and deploy multiple Helm charts easily.
+
+    - I Can define multiple release and then change specification of each release depending on Application itself 
+  ```
+  
+    -- Install Helmfile : `brew install helmfile`
+
+    -- `helm file sync` :
+      --- Prepare all the Release 
+      --- It will then compare the acutal State in the Cluster with the desired state that I configured in Helmfile
+      --- Base on that It will plan what need to be install and deployed in the Cluster to give me a desire State 
+
+    -- `helm list` : Which show me at any point the currently installed released that Helmfile manage for me 
+      
+
 **Deployment**
 
 ```
