@@ -247,15 +247,6 @@ memoryLimit: 128Mi
 cpuLimit: 500m
 ```
 
-- Then I will create value for all Micro-services
-- 
-
-
-
-
-
-
-
 
 
 
