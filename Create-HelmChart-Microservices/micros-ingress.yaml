@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: 23-239-6-16.ip.linodeusercontent.com # This could be valid domain name
+    http:
+      paths:
+        - path: / # This is the path that will be used to access the service
+          pathType: Prefix
+          backend: # This is a target service that will used to forward the request
+            service:
+              name: frontend
+              port:
+                number: 8080

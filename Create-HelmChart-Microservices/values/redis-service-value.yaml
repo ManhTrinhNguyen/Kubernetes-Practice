@@ -1,0 +1,21 @@
+appName: redis
+replicasCount: 1
+appImage: redis
+appVersion: 7.4.2
+containerPort: 6379
+servicePort: 6379
+serviceType: ClusterIP
+livenessProbe: 
+  tcpSocket:
+    port: 6379
+  periodSeconds: 5
+readinessProbe:
+  tcpSocket:
+    port: 6379
+  periodSeconds: 5
+memoryRequest: 64Mi
+cpuRequest: 250m
+memoryLimit: 128Mi
+cpuLimit: 500m
+volumeName: redis-data
+mountPath: /data

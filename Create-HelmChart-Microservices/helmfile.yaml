@@ -1,0 +1,56 @@
+releases:
+  - name: email-service
+    namespace: default
+    chart: charts/microservices
+    values:
+      - values/email-service-value.yaml
+  - name: adservice
+    namespace: default
+    chart: charts/microservices
+    values:
+      - values/ad-service-value.yaml
+  - name: cartservice
+    namespace: default
+    chart: charts/microservices
+    values:
+      - values/cart-service-value.yaml
+  - name: checkoutservice
+    namespace: default
+    chart: charts/microservices
+    values:
+      - values/checkout-service-value.yaml
+  - name: currencyservice
+    namespace: default
+    chart: charts/microservices
+    values:
+      - values/currency-service-value.yaml
+  - name: frontend
+    namespace: default
+    chart: charts/microservices
+    values:
+      - values/frontend-value.yaml
+  - name: paymentservice
+    namespace: default
+    chart: charts/microservices
+    values:
+      - values/payment-service-value.yaml
+  - name: productcatalogservice
+    namespace: default
+    chart: charts/microservices
+    values:
+      - values/product-catalog-service-value.yaml
+  - name: recommendationservice
+    namespace: default
+    chart: charts/microservices
+    values:
+      - values/recommendation-service-value.yaml
+  - name: shippingservice
+    namespace: default
+    chart: charts/microservices
+    values:
+      - values/shipping-service-value.yaml
+  - name: redis
+    namespace: default
+    chart: charts/redis
+    values:
+      - values/redis-service-value.yaml

@@ -4,7 +4,7 @@ appImage: gcr.io/google-samples/microservices-demo/frontend
 appVersion: v0.8.0
 containerPort: 8080
 servicePort: 8080
-serviceType: ClusterIP
+serviceType: LoadBalancer
 containerEnvVars: 
   - name: PORT
     value: "8080"
