@@ -109,7 +109,7 @@
             values:
   ```
 
-  - Step 7 : Deplot Ingress Controller by using Helm
+  - Step 7 : Deploy Ingress Controller by using Helm
 
   ```
     - Ingress Controller evaluate all the Rules in Ingress Component . That way to manage all the redirection . This will be an Entry Point for my Cluster
@@ -125,6 +125,7 @@
      - This NodeBalancer is an Entry Point of my K8s Cluster -> This NodeBalancer give me an External IP, Ports -> and NodeBalancer will forward the request coming in into Cluster to the Ingress Controller and to the Service base on Ingress rule I create
   ```
 
+  - Step 8 : Deploy Ingress Rule
     
 **Deployment**
 
