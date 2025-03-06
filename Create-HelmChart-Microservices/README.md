@@ -109,6 +109,22 @@
             values:
   ```
 
+  - Step 7 : Deplot Ingress Controller by using Helm
+
+  ```
+    - Ingress Controller evaluate all the Rules in Ingress Component . That way to manage all the redirection . This will be an Entry Point for my Cluster
+
+    Step 1 : Add NGINX repo : `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
+
+    Step 2 : Installing the helm chart : `helm install ingress-controller ingress-nginx/ingress-nginx --set controller.publishService.enabled=true`
+
+      -- --set controller.publishService.enabled=true: This attr make sure it automatically allocated the Public IP address
+
+    - Ingress Controller  use Cloud Native in the background . Linode's own NodeBalancer dynamically created and provisioned as I created Ingress Controller
+
+     - This NodeBalancer is an Entry Point of my K8s Cluster -> This NodeBalancer give me an External IP, Ports -> and NodeBalancer will forward the request coming in into Cluster to the Ingress Controller and to the Service base on Ingress rule I create
+  ```
+
     
 **Deployment**
 
