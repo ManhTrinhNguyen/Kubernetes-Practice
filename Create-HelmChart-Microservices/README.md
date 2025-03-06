@@ -87,7 +87,7 @@
     - Helmfile is a tool that helps me manage and deploy multiple Helm charts easily.
 
     - I Can define multiple release and then change specification of each release depending on Application itself 
-  ```
+  
   
     -- Install Helmfile : `brew install helmfile`
 
@@ -99,17 +99,17 @@
 
     -- `helm list` : Which show me at any point the currently installed released that Helmfile manage for me 
       
-    - Step 7 : Helmfile Configuration 
+    - Helmfile Configuration:
 
+        releases:
+        - name: my-app
+          namespace: default
+          chart: stable/nginx
+          version: 1.2.3
+          values:
     ```
-    releases:
-    - name: my-app
-      namespace: default
-      chart: stable/nginx
-      version: 1.2.3
-      values:
-        - values.yaml
-    ```
+
+    
 **Deployment**
 
 ```
