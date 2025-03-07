@@ -117,10 +117,17 @@
       name: docker-authenticate-secret
     type: kubernetes.io/dockerconfigjson
     data:
-      .dockerconfigjson: ewoJImF1dGhzIjogewoJCSI1NjUzOTMwMzc3OTkuZGtyLmVjci51cy13ZXN0LTEuYW1hem9uYXdzLmNvbSI6IHt9Cgl9LAoJImNyZWRzU3RvcmUiOiAiZGVza3RvcCIsCgkiY3VycmVudENvbnRleHQiOiAiZGVza3RvcC1saW51eCIKfQ==
-
-    ## Values in base 64 encode 
+      .dockerconfigjson: <My config.json base64 encode>
   ```
+
+  - Step 1.4 : The second way to create Secrect Component
+
+      ```
+        kubectl create secret docker-registry <my-secrect-name> \
+        --docker-server=https://565393037799.dkr.ecr.us-west-1.amazonaws.com
+        --docker-username=AWS
+        --docker-password=aws ecr get-login-password --region us-west-1
+      ```
 
   - Step 1.4: ENV for the Container to Connect to DB
 
