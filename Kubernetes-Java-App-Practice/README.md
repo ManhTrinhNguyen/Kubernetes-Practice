@@ -21,4 +21,24 @@
 
 ## Practice 2 : Deploy MySQL DB with Helm 
 
-  - Step 1 : 
+  - Helm is a Package Manager for Kubernetes
+
+  - Helm Chart is a bundle of multiple YAML files that written by others . I can take it and use
+
+  - To see any Helm Chart available I go to (https://artifacthub.io)
+
+  - Step 1 : Install Helm for mac `brew install helm`
+
+  - Step 2 : Bitnami is a provider Helm Charts . They also Provide and Maintain MySQL DB Helm chart . To get Bitnami Repo : `helm repo add bitnami https://charts.bitnami.com/bitnami`
+
+
+
+
+
+
+
+
+
+
+
+
