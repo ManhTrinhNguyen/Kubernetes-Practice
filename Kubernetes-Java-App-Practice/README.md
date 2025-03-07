@@ -15,4 +15,4 @@
 
   - Step 4 : Connect kubectl to LKE so I can talk to my Cluster in my Local Machine `KUBECONFIG=java-app-cluster-config.yaml`
 
-      -- java-app-cluster-config.yaml : Provided by Linode in the UI  
+      - java-app-cluster-config.yaml : Provided by Linode in the UI  
