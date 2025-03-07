@@ -131,10 +131,35 @@
 
   - Step 1.4: ENV for the Container to Connect to DB
 
-    - DB_USER
-    - DB_PWD
-    - DB_SERVER
-    - DB_NAME 
+    - I Created the Secret Component to store DB_USER, DB_PWD, DB_NAME
+    
+    ```
+      - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: java-secret
+              key: DB_USER
+        - name: DB_PWD
+          valueFrom:
+            secretKeyRef:
+              name: java-secret
+              key: DB_PWD
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: java-secret
+              key: DB_NAME
+        - name: DB_SERVER
+          value: mysql-primary-0.mysql-primary-headless
+    ```
+
+    - name: DB_SERVER
+      value: mysql-primary-0.mysql-primary-headless : This is a value of MySQL server . This is a endpoint where My Java App will connect to MySQL Pod
+
+      - mysql-primary-0 : Pod Name
+      - mysql-primary-headless : headless service name 
+        
+    
 
 
 
