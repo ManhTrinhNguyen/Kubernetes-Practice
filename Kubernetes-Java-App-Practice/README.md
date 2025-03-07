@@ -131,7 +131,7 @@
 
   - Step 1.4: ENV for the Container to Connect to DB
 
-    - I Created the Secret Component to store DB_USER, DB_PWD, DB_NAME
+    - I Created the Secret Component to store DB_USER, DB_NAME
     
     ```
       - name: DB_USER
@@ -139,11 +139,11 @@
             secretKeyRef:
               name: java-secret
               key: DB_USER
-        - name: DB_PWD
+         - name: DB_PWD
           valueFrom:
             secretKeyRef:
-              name: java-secret
-              key: DB_PWD
+              name: mysql
+              key: mysql-password
         - name: DB_NAME
           valueFrom:
             secretKeyRef:
