@@ -19,3 +19,6 @@
    
   - Now I have Cluster running and I can talk to it via my Local Machine by using `kubectl` CLI
 
+## Practice 2 : Deploy MySQL DB with Helm 
+
+  - Step 1 : 
