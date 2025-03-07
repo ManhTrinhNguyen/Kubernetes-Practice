@@ -106,6 +106,13 @@
     ## Values in base 64 encode 
   ```
 
+  - Step 1.4: ENV for the Container to Connect to DB
+
+    - DB_USER
+    - DB_PWD
+    - DB_SERVER
+    - DB_NAME 
+
 
 
   
