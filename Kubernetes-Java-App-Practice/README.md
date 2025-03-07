@@ -92,8 +92,24 @@
   
     - Now Whenever Docker try to pull Image from ECR . It will use those Credentials in config.json to authenticate itself and pull Image
    
+    - But K8's doesn't support 
+   
   - Step 1.3 : Create Secret Component
 
+    - Bcs K8's doesn't Support credsStore I need to manually create the valid Config.json
+   
+      ```
+        echo '{
+        "auths": {
+          "565393037799.dkr.ecr.us-west-1.amazonaws.com": {
+            "username": "AWS",
+            "password": "'$(aws ecr get-login-password --region us-west-1)'",
+            "auth": "'$(echo -n "AWS:$(aws ecr get-login-password --region us-west-1)" | base64)'"
+          }
+        }
+      }' > .docker/config.json
+      ```
+ 
   ```
     apiVersion: v1
     kind: Secret
