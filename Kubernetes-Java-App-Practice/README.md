@@ -13,6 +13,9 @@
 
   - Step 3 : Choose name -> Choose Region -> Choose 3 Shared CPU
 
-  - Step 4 : Connect kubectl to LKE so I can talk to my Cluster in my Local Machine `KUBECONFIG=java-app-cluster-config.yaml`
+  - Step 4 : Connect kubectl to LKE so I can talk to my Cluster in my Local Machine `export KUBECONFIG=java-app-cluster-config.yaml`
 
-      - java-app-cluster-config.yaml : Provided by Linode in the UI  
+      - java-app-cluster-config.yaml : Provided by Linode in the UI
+   
+  - Now I have Cluster running and I can talk to it via my Local Machine by using `kubectl` CLI
+
