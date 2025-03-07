@@ -82,17 +82,18 @@
     - Configure Deployment to use that Secret using Attribute called `imagePullSecrets` 
   ```
 
-    - Step 1.2 : Create Secret Component 
 
-      - This Secret component need to have credentials to Private Repo (ECR) which allow Docker to pull Image 
+  - Step 1.2 : Create Secret Component 
 
-      - First I need to login to ECR 'aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 565393037799.dkr.ecr.us-west-1.amazonaws.com'
+    - This Secret component need to have credentials to Private Repo (ECR) which allow Docker to pull Image 
 
-      - After Login succeed , In the background It will automatically create the .docker/config.json . This file store the credentials to login in AWS  . 
+    - First I need to login to ECR 'aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 565393037799.dkr.ecr.us-west-1.amazonaws.com'
 
-      - Now Whenever Docker try to pull Image from ECR . It will use those Credentials in config.json to authenticate itself and pull Image
-    
-    
+    - After Login succeed , In the background It will automatically create the .docker/config.json . This file store the credentials to login in AWS  . 
+
+    - Now Whenever Docker try to pull Image from ECR . It will use those Credentials in config.json to authenticate itself and pull Image
+  
+  
 
 
 
