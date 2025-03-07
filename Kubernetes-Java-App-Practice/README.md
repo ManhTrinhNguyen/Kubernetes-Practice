@@ -72,9 +72,29 @@
 
 ## Practice 3 : Deploy Java Apps with 2 Replica 
 
-  - Step 1 : Create Deployment and Service for my Java Apps
+  - Step 1 : Create Deployment
 
-    - Get Java Image in my Private Docker Hub 
+  ```
+    - I have Java Image in my ECR Private Repo
+
+    - To pull Image From ECR are I need to create Secret Component containe access token and crenditals to my Private Docker Repo
+   
+    - Configure Deployment to use that Secret using Attribute called `imagePullSecrets` 
+  ```
+
+    - Step 1.2 : Create Secret Component 
+
+    ```
+      - This Secret component need to have credentials to Private Repo (ECR) which allow Docker to pull Image 
+
+      - First I need to login to ECR 'aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 565393037799.dkr.ecr.us-west-1.amazonaws.com'
+
+      - After Login succeed , In the background It will automatically create the .docker/config.json . This file store the credentials to login in AWS  . 
+
+      - Now Whenever Docker try to pull Image from ECR . It will use those Credentials in config.json to authenticate itself and pull Image
+    ```
+    
+    
 
 
 
