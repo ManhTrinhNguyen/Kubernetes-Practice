@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-app
+  labels:
+    app: java-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: java-app
+  template:
+    metadata:
+      labels:
+        app: java-app
+    spec:
+      imagePullSecrets: # This is the secret that will be used to pull the image from the registry
+      - name: docker-authenticate-secret
+      containers:
+      - name: java-app
+        image: 565393037799.dkr.ecr.us-west-1.amazonaws.com/java-app:1.0
+        imagePullPolicy: Always # This is will alway pull images from Repository 
+        ports:
+          - containerPort: 8080
+        env:
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: java-secret
+              key: DB_USER
+        - name: DB_PWD
+          valueFrom:
+            secretKeyRef:
+              name: mysql
+              key: mysql-password
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: java-secret
+              key: DB_NAME
+        - name: DB_SERVER
+          value: mysql-primary-0.mysql-primary-headless
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: java-app
+spec:
+  selector:
+    app: java-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      

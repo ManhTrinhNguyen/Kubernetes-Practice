@@ -2,3 +2,5 @@
 build
 out
 .gradle*
+
+java-app-cluster-kubeconfig.yaml
