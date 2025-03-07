@@ -10,7 +10,11 @@
 
     - Build Image with ECR Repo URL tag bcs to ensure that image correctly pushed, stored ,deployed in AWS
    
-  - Step 4 : Push Image to AWS . `docker push 565393037799.dkr.ecr.us-west-1.amazonaws.com/java-app:1.0`  
+  - Step 4 : Login to AWS : `aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 565393037799.dkr.ecr.us-west-1.amazonaws.com`
+  
+    - In able to Login to to my aws I need AWS CLI installed and Credentials Configured  
+   
+  - Step 5 : Push Image to AWS . `docker push 565393037799.dkr.ecr.us-west-1.amazonaws.com/java-app:1.0`  
 
 ## Practice 1 : Clone Java App from Github
 
