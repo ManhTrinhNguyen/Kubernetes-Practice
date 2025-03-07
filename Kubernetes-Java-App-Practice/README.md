@@ -1,5 +1,16 @@
 # Deploy Java App with Kubernetes
 
+## Build and Push Docker Image to ECR 
+
+  - Step 1 : Create Docker file to build Image
+
+  - Step 2 : Create ECR Repository
+
+  - Step 3 : Build Docker image with ECR Repo URL tag : `docker build -t 565393037799.dkr.ecr.us-west-1.amazonaws.com/java-app:1.0`
+
+    - Build Image with ECR Repo URL tag bcs to ensure that image correctly pushed, stored ,deployed in AWS
+   
+  - Step 4 : Push Image to AWS . `docker push 565393037799.dkr.ecr.us-west-1.amazonaws.com/java-app:1.0`  
 
 ## Practice 1 : Clone Java App from Github
 
@@ -55,7 +66,11 @@
 
   - Step 7 : I Can also get inside the pod to see mysql pod ENV : `kubectl exec -it <pod-name> -- bin/bash` 
 
+## Practice 3 : Deploy Java Apps with 2 Replica 
 
+  - Step 1 : Create Deployment and Service for my Java Apps
+
+    - Get Java Image in my Private Docker Hub 
 
 
 
