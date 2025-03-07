@@ -31,6 +31,27 @@
 
   - Step 2 : Bitnami is a provider Helm Charts . They also Provide and Maintain MySQL DB Helm chart . To get Bitnami Repo : `helm repo add bitnami https://charts.bitnami.com/bitnami`
 
+  !!! Note : When I execute Helm Command it will execute against the Cluster I connected to 
+
+  - Step 3 : To search for Bitnami Repo : `helm search repo bitnami`
+
+  - Step 4 : Create a Mysql Values files . So I can overwrite the values that I need to for my MySQL
+
+  ```
+    architecture: "replication"
+    secondary:
+      replicaCount: 2
+    auth:
+      rootPassword: "rootpassword"
+      username: "tim"
+      password: "password"
+    global:
+      storageClass: "linode-block-storage"
+  ```
+
+  - Step 5 : To install MySQL Helm Charts from Bitnami : `helm install <release-name> --values <mysql-helm-value-yaml-file> bitnami/mysql
+`
+
 
 
 
