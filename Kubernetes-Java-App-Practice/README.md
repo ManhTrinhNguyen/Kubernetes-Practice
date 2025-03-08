@@ -129,7 +129,7 @@
         --docker-password=aws ecr get-login-password --region us-west-1
       ```
 
-  - Step 1.4: ENV for the Container to Connect to DB
+  - Step 1.5: ENV for the Container to Connect to DB
 
     - I Created the Secret Component to store DB_USER, DB_NAME
       
@@ -251,21 +251,23 @@
   metadata:
     name: phpmyadmin
   spec:
-    type: NodePort
     selector:
       app: phpmyadmin
     ports:
       - protocol: TCP
         port: 80
         targetPort: 8080
-        nodePort: 30001
   ```
 
-  - I give it a type nodePort Bcs I want to test if it work correctly . I will change it to Cluster IP and create Ingress rule for security 
+## Practice 5 : Deploy Ingress Controller by using Helm 
 
+```
+  - Ingress controller is another Component in the Cluster to evaluate all the Rules that I defined in the Cluster . That way to manage the Redirection
+```
 
+  - Step 1 : Install helm : `brew install helm`
 
-
+  - Step 2 : Install Ingress Repo helm : `helm install ` 
 
 
 
