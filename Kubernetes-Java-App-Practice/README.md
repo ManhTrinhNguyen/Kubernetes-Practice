@@ -187,7 +187,12 @@
 
     - To see what happen I use : `kubectl logs <pod-name>` .
  
-    - Now I know the Error from when It it is trying to start the container . To see what happen inside the pod I can use `kubectl describe pod` . 
+    - Now I know the Error from when It it is trying to start the container . To see what happen inside the pod I can use `kubectl describe pod` .
+ 
+    - Inside the pod describe I see that I miss spelling my mysql secrect in the ENV section :
+      
+   <img width="400" alt="Screenshot 2025-03-08 at 10 58 34" src="https://github.com/user-attachments/assets/cdc42ced-b6e5-492c-ae45-c3679395829f" />
+
 
 
 
