@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: java-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: 45-79-231-234.ip.linodeusercontent.com # I use this for host because I don't have a domain name . For test purposes
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: java-app
+            port:
+              number: 8080
+

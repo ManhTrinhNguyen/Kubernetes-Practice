@@ -39,7 +39,10 @@ spec:
               name: java-secret
               key: DB_NAME
         - name: DB_SERVER
-          value: mysql-primary-0.mysql-primary-headless
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-configmap
+              key: database_server
 ---
 apiVersion: v1
 kind: Service
@@ -52,4 +55,4 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-      
+        
