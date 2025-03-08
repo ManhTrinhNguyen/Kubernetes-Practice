@@ -263,11 +263,27 @@
 
 ```
   - Ingress controller is another Component in the Cluster to evaluate all the Rules that I defined in the Cluster . That way to manage the Redirection
+
+  - Ingress Controller use cloud native in the background . So whenever I installed Ingress Controller my Cloud Loadbalancer automatic created
 ```
 
   - Step 1 : Install helm : `brew install helm`
 
-  - Step 2 : Install Ingress Repo helm : `helm install ` 
+  - Step 2 : Add Nginx Repo : `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
+
+  - Step 3 : Install Ingress controller from Nginx Repo : `helm install <release-name> ingress-nginx/ingress-nginx --set controller.publishService.enabled=true`
+
+    - --set controller.publishService.enabled=true : This attribute to make sure that we are automatically allocated the Public IP for my Ingress Address to use with Nginx
+   
+    - Step 3 : To check Ingress Controller is running :
+      
+      <img width="500" alt="Screenshot 2025-03-08 at 13 24 32" src="https://github.com/user-attachments/assets/f6e20416-9969-4ce1-ae9f-43613d7622e6" />
+      
+    <img width="500" alt="Screenshot 2025-03-08 at 13 25 04" src="https://github.com/user-attachments/assets/92655dae-7bb4-4170-9921-6f78dbdbcfa8" />
+
+      - `kubectl get pods` to see the Ingress controller pod
+      
+      - `kubectl get svc` to see Ingress Controller Services 
 
 
 
