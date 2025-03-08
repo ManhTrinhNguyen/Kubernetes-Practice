@@ -222,10 +222,11 @@
                   name: mysql
                   key: mysql-password
       ```
+    
 
     - If I start the Pod but I have error sometime the message like this: 
       
-    <img width="400" alt="Screenshot 2025-03-08 at 10 54 05" src="https://github.com/user-attachments/assets/a1825614-146e-4d3c-94ac-2657e2d72f6a" />
+    <img width="500" alt="Screenshot 2025-03-08 at 10 54 05" src="https://github.com/user-attachments/assets/a1825614-146e-4d3c-94ac-2657e2d72f6a" />
 
     - To see what happen I use : `kubectl logs <pod-name>` .
  
@@ -233,10 +234,27 @@
  
     - Inside the pod describe I see that I miss spelling my mysql secrect in the ENV section :
       
-   <img width="400" alt="Screenshot 2025-03-08 at 10 58 34" src="https://github.com/user-attachments/assets/cdc42ced-b6e5-492c-ae45-c3679395829f" />
+   <img width="500" alt="Screenshot 2025-03-08 at 10 58 34" src="https://github.com/user-attachments/assets/cdc42ced-b6e5-492c-ae45-c3679395829f" />
 
+  - Step 3 : Create Service
 
+  ```
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: phpmyadmin
+  spec:
+    type: NodePort
+    selector:
+      app: phpmyadmin
+    ports:
+      - protocol: TCP
+        port: 80
+        targetPort: 8080
+        nodePort: 30001
+  ```
 
+  - I give it a type nodePort Bcs I want to test if it work correctly . I will change it to Cluster IP and create Ingress rule for security 
 
 
 
