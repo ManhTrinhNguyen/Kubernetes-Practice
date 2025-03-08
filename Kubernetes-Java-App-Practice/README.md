@@ -177,9 +177,17 @@
     
 ## Practice 4 : Deploy phpmyadmin 
 
-  Step 1: Get phpmyadmin Image from Dockerhub `phpmyadmin:5.2.2-fpm-alpine`
+-  Step 1: Get phpmyadmin Image from Dockerhub `phpmyadmin:5.2.2-fpm-alpine`
 
-  Step 2 : Configure Deployment Yaml
+-  Step 2 : Configure Deployment Yaml
+
+    - If I start the Pod but I have error sometime the message like this: 
+      
+    <img width="400" alt="Screenshot 2025-03-08 at 10 54 05" src="https://github.com/user-attachments/assets/a1825614-146e-4d3c-94ac-2657e2d72f6a" />
+
+    - To see what happen I use : `kubectl logs <pod-name>` .
+ 
+    - Now I know the Error from when It it is trying to start the container . To see what happen inside the pod I can use `kubectl describe pod` . 
 
 
 
