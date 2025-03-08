@@ -181,6 +181,64 @@
 
 -  Step 2 : Configure Deployment Yaml
 
+    ```
+    apiVersion : apps/v1
+    kind: Deployment
+    metadata:
+      name: phpmyadmin
+      labels:
+        app: phpmyadmin
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: phpmyadmin
+      template:
+        metadata:
+          labels:
+            app: phpmyadmin
+        spec:
+          containers:
+          - name: phpmyadmin
+            image: phpmyadmin:5.2.2-fpm-alpine
+            ports: 
+              - containerPort: 8080
+            env: 
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql
+                  key: mysql-root-password
+            - name: PMA_HOST
+              value: mysql-primary-0.mysql-primary-headless
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: java-secret
+                  key: DB_USER
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql
+                  key: mysql-password
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: phpmyadmin
+spec:
+  type: NodePort
+  selector:
+    app: phpmyadmin
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      nodePort: 30001
+
+    ```
+
     - If I start the Pod but I have error sometime the message like this: 
       
     <img width="400" alt="Screenshot 2025-03-08 at 10 54 05" src="https://github.com/user-attachments/assets/a1825614-146e-4d3c-94ac-2657e2d72f6a" />
