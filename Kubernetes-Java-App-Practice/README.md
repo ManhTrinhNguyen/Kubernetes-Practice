@@ -285,6 +285,13 @@
       
       - `kubectl get svc` to see Ingress Controller Services 
 
+## Practice 6 : Define Ingress Rule 
+
+```
+  - Ingress is an abstract Component in the Cluster . It provide the Routing rules to manage the redirection . Manage which request redirect to which Pod
+```
+
+  - Step 1 : Create Ingress yaml 
 
 
 
