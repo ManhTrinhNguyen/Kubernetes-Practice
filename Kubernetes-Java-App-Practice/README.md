@@ -132,6 +132,13 @@
   - Step 1.4: ENV for the Container to Connect to DB
 
     - I Created the Secret Component to store DB_USER, DB_NAME
+      
+    <img width="500" alt="Screenshot 2025-03-08 at 11 23 58" src="https://github.com/user-attachments/assets/6336f486-5782-4dd1-b0dc-f6f18b508ae8" />
+
+    - And I created Configmap Component to Store DB_URL_Server
+   
+   <img width="500" alt="Screenshot 2025-03-08 at 11 23 44" src="https://github.com/user-attachments/assets/e2d51da8-5707-4455-8042-6da89198cc37" />
+
     
     ```
       - name: DB_USER
