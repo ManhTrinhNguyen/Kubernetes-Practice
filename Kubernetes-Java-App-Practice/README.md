@@ -158,7 +158,22 @@
 
       - mysql-primary-0 : Pod Name
       - mysql-primary-headless : headless service name 
-        
+
+  - Step 2 : Create Services file
+
+  ```
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: java-app
+    spec:
+      selector:
+        app: java-app
+      ports:
+        - protocol: TCP
+          port: 8080
+          targetPort: 8080
+  ```
     
 
 
