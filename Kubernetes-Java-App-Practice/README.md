@@ -179,7 +179,7 @@
 
   Step 1: Get phpmyadmin Image from Dockerhub `phpmyadmin:5.2.2-fpm-alpine`
 
-  Step 2 : Configure Deployment Yamle 
+  Step 2 : Configure Deployment Yaml
 
 
 
