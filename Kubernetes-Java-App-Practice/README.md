@@ -221,23 +221,7 @@
                 secretKeyRef:
                   name: mysql
                   key: mysql-password
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: phpmyadmin
-spec:
-  type: NodePort
-  selector:
-    app: phpmyadmin
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8080
-      nodePort: 30001
-
-    ```
+      ```
 
     - If I start the Pod but I have error sometime the message like this: 
       
