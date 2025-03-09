@@ -293,7 +293,11 @@
 
   - Step 1 : Create Ingress yaml 
 
+  !!! Error occur : When I try apply Ingress `kubectl apply -f yaml-config-files/java-ingress.yaml`
 
+  ```
+  Error from server (InternalError): error when creating "yaml-config-files/java-ingress.yaml": Internal error occurred: failed calling webhook "validate.nginx.ingress.kubernetes.io": failed to call webhook: Post "https://ingress-controller-ingress-nginx-controller-  admission.default.svc:443/networking/v1/ingresses?timeout=10s": context deadline exceeded
+  ```
 
 
 
