@@ -303,7 +303,9 @@
 
   - Then I checked my Ingress Controller and my Cluster . Everything running fine 
 
+  - I go to check the Ingress-Nginx yaml file : `kubectl get pod <ingress-controller-ingress-nginx-controller> -o yaml`
 
+  - Make sure the Ingress-controller Pod is Up, Running, and Ready : `kubectl wait --for=condition=ready pod --selector=app.kubernetes.io/component=controller --timeout=120s`
 
 
 
