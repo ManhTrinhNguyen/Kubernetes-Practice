@@ -68,7 +68,7 @@
 `
   - Step 6 : After MySQL DB started . To debug if something wrong with the pods : `kubectl logs <pods-name>`
 
-  - Step 7 : I Can also get inside the pod to see mysql pod ENV : `kubectl exec -it <pod-name> -- bin/bash` 
+  - Step 7 : I Can also get inside the pod to see mysql pod ENV : `kubectl exec -it <pod-name> -- bin/bash` Or `kubectl describe pod <pod-name>`
 
 ## Practice 3 : Deploy Java Apps with 2 Replica 
 
