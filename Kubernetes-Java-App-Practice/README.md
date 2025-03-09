@@ -307,7 +307,9 @@
 
   - I go to check the Ingress-Nginx yaml file : `kubectl get pod <ingress-controller-ingress-nginx-controller> -o yaml`
 
-  - Make sure the Ingress-controller Pod is Up, Running, and Ready : `kubectl wait --for=condition=ready pod --selector=app.kubernetes.io/component=controller --timeout=120s` . The Output is "pod/ingress-controller-ingress-nginx-controller-577754b989-fk8mh condition met" . That mean it is ready 
+  - Make sure the Ingress-controller Pod is Up, Running, and Ready : `kubectl wait --for=condition=ready pod --selector=app.kubernetes.io/component=controller --timeout=120s` . The Output is "pod/ingress-controller-ingress-nginx-controller-577754b989-fk8mh condition met" . That mean it is ready
+
+    - I am still don't know what happen to the Error . But I destroy the whole Cluster and create it again . Now I can create Ingress 
 
 
 
