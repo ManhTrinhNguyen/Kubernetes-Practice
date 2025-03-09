@@ -305,7 +305,7 @@
 
   - I go to check the Ingress-Nginx yaml file : `kubectl get pod <ingress-controller-ingress-nginx-controller> -o yaml`
 
-  - Make sure the Ingress-controller Pod is Up, Running, and Ready : `kubectl wait --for=condition=ready pod --selector=app.kubernetes.io/component=controller --timeout=120s`
+  - Make sure the Ingress-controller Pod is Up, Running, and Ready : `kubectl wait --for=condition=ready pod --selector=app.kubernetes.io/component=controller --timeout=120s` . The Output is `pod/ingress-controller-ingress-nginx-controller-577754b989-fk8mh condition met`
 
 
 
