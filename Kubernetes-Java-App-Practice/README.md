@@ -299,6 +299,9 @@
   Error from server (InternalError): error when creating "yaml-config-files/java-ingress.yaml": Internal error occurred: failed calling webhook "validate.nginx.ingress.kubernetes.io": failed to call webhook: Post "https://ingress-controller-ingress-nginx-controller-  admission.default.svc:443/networking/v1/ingresses?timeout=10s": context deadline exceeded
   ```
 
+  <img width="600" alt="Screenshot 2025-03-09 at 10 09 38" src="https://github.com/user-attachments/assets/1d3446d0-e38e-4def-a5ee-39588d61beb1" />
+
+  - Then I checked my Ingress Controller and my Cluster . Everything running fine 
 
 
 
