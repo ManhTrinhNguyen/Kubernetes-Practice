@@ -18,7 +18,7 @@ spec:
       - name: docker-authenticate-secret
       containers:
       - name: java-app
-        image: 565393037799.dkr.ecr.us-west-1.amazonaws.com/java-app:1.0
+        image: 565393037799.dkr.ecr.us-west-1.amazonaws.com/java-app:4.0
         imagePullPolicy: Always # This is will alway pull images from Repository 
         ports:
           - containerPort: 8080
@@ -47,7 +47,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: java-app
+  name: java-app-service
 spec:
   selector:
     app: java-app

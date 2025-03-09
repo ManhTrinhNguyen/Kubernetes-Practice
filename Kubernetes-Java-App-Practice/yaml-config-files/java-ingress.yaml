@@ -5,14 +5,14 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: 45-79-231-234.ip.linodeusercontent.com # I use this for host because I don't have a domain name . For test purposes
+  - host: 45-79-231-7.ip.linodeusercontent.com # I use this for host because I don't have a domain name . For test purposes
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: java-app
+            name: java-app-service
             port:
               number: 8080
 
