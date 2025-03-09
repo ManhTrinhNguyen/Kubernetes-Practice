@@ -259,6 +259,8 @@
         targetPort: 8080
   ```
 
+  - Step 4 : To access my phpmyadmin in the UI in my localhost . However I don't want to expose phpmyadmin for Security . I will configure Port-forwarding for the Service to access on localhost : `kubectl port-forward svc/phpmyadmin-service 8081:8081` 
+
 ## Practice 5 : Deploy Ingress Controller by using Helm 
 
 ```
