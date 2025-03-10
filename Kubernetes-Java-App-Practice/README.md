@@ -344,7 +344,7 @@
 
   - Step 1 : To create Helm chart : `helm create <helm-chart-name>`
 
-  - Step 2 : Create Deployment Helm chart
+  - Step 2 : Create Helm chart (Deployment)
 
   ```
   - Instead of hardcode Values I use syntax for dynamically Values : : {{.Values.<name-of-the-value>}}
@@ -373,9 +373,9 @@
 
   ```
   env:
-  {{ - range .Values.containerEnvVars}}
-  - name: {{ .key }}
-    value: {{ .value | quote }}
+  {{ - range $key, $value := .Values.containerEnvVars}}
+  - name: {{ $key }}
+    value: {{ $value | quote }}
   {{ - end}}
   
   Note: Value ENV variable alway interpreted as strings . So I use a built-in function called quote and will use piping syntax |
@@ -390,29 +390,85 @@
   ```
   env:
   # This is for regular Data
-  {{ - range .Values.regularEnvData }} 
-  - name: {{ .key }}
-    value: {{ .value | quote }}
+  {{- range $key, $value := .Values.regularEnvData }} 
+  - name: {{ $key }}
+    value: {{ $value | quote }}
   {{ - end }}
 
   # This is for secretData
-  {{ - range .Values.secretData }} 
-  - name: {{ .key }}
+  {{- range $key, $value := .Values.secretData }} 
+  - name: {{ $key }}
     valueFrom: 
-      secretKeyRef: 
-        name: {{ .Values.secretName }}
-        key: {{ .key }}
-  {{ -end }}
+      secretKeyRef:
+        # in loop, we lose global context, but can access global context with $
+        # $ is 1 variable that is always global and will always point to the root context
+        # so $.Value instead of .Values
+        name: {{ $.Values.secretName }}
+        key: {{ $key }}
+  {{- end }}
 
   # This is for configData
-  {{ - range .Values.configData }}
-  - name: {{ .key }}
+  {{- range $key, $value := .Values.configData }}
+  - name: {{ $key }}
     valueFrom:
       configMapKeyRef:
-        name: {{ .Values.configName }}
-        key: {{ .key }}
-  {{ -end }}
+        # in loop, we lose global context, but can access global context with $
+        # $ is 1 variable that is always global and will always point to the root context
+        # so $.Value instead of .Values
+        name: {{ $.Values.configName }}
+        key: {{ $key }}
+  {{- end }}
   ```
+
+  **Deployment Configuration**
+  
+  ```
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: {{ .Values.appName }}
+    labels:
+      app: {{ .Values.appName }}
+  spec:
+    replicas: {{ .Values.replicasCount }}
+    selector:
+      matchLabels:
+        app: {{ .Values.appName }}
+    template:
+      metadata:
+        labels:
+          app: {{ .Values.appName }}
+      spec:
+        imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets }}
+        containers:
+        - name : {{ .Values.appName }}
+          image: "{{ .Values.imageName }}:{{ .Values.imageVersion | toString }}"
+          imagePullPolicy: Always
+          ports: 
+          - containerPort: {{ .Values.containerPort }}
+          env: 
+          {{- range $key, $value := .Values.regularEnvData }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+          {{- end }}
+  
+          {{- range $key, $value := .Values.secretData }}
+          - name: {{ $key }}
+            valueFrom: 
+              secretKeyRef: 
+                name: {{ $.Values.secretName }}
+                key: {{ $key }}
+          {{- end }}
+  
+          {{- range $key, $value := .Values.configData }}
+          - name: {{ $key }}
+            valueFrom:
+              configMapKeyRef:
+                name: {{ $.Values.configName }}
+                key: {{ $key }}
+          {{- end }}
+  ```  
 
 
   
