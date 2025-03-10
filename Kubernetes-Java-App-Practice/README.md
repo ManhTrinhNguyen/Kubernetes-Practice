@@ -34,7 +34,7 @@
    
   - Now I have Cluster running and I can talk to it via my Local Machine by using `kubectl` CLI
 
-## Practice 2 : Deploy MySQL DB with Helm 
+## Practice 3 : Deploy MySQL DB with Helm 
 
   - Helm is a Package Manager for Kubernetes
 
@@ -70,7 +70,7 @@
 
   - Step 7 : I Can also get inside the pod to see mysql pod ENV : `kubectl exec -it <pod-name> -- bin/bash` Or `kubectl describe pod <pod-name>`
 
-## Practice 3 : Deploy Java Apps with 2 Replica 
+## Practice 4 : Deploy Java Apps with 2 Replica 
 
   - Step 1 : Create Deployment
 
@@ -182,7 +182,7 @@
           targetPort: 8080
   ```
     
-## Practice 4 : Deploy phpmyadmin 
+## Practice 5 : Deploy phpmyadmin 
 
 -  Step 1: Get phpmyadmin Image from Dockerhub `phpmyadmin:5.2.2-fpm-alpine`
 
@@ -261,7 +261,7 @@
 
   - Step 4 : To access my phpmyadmin in the UI in my localhost . However I don't want to expose phpmyadmin for Security . I will configure Port-forwarding for the Service to access on localhost : `kubectl port-forward svc/phpmyadmin-service 8081:8081` 
 
-## Practice 5 : Deploy Ingress Controller by using Helm 
+## Practice 6 : Deploy Ingress Controller by using Helm 
 
 ```
   - Ingress controller is another Component in the Cluster to evaluate all the Rules that I defined in the Cluster . That way to manage the Redirection
@@ -287,7 +287,7 @@
       
       - `kubectl get svc` to see Ingress Controller Services 
 
-## Practice 6 : Define Ingress Rule 
+## Practice 7: Define Ingress Rule 
 
 ```
   - Ingress is an abstract Component in the Cluster . It provide the Routing rules to manage the redirection . Manage which request redirect to which Pod
@@ -333,7 +333,10 @@
 
     - I am still don't know what happen to the Error . But I destroy the whole Cluster and rent more CPU and deploy it again . Now I can create Ingress .
    
-  
+
+## Practice 8: Create Helm chart for Java App
+
+
 
 
 
