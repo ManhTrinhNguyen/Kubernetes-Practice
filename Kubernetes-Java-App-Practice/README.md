@@ -344,6 +344,8 @@
 
   - Step 1 : To create Helm chart : `helm create <helm-chart-name>`
 
+  - Step 2 : Create Deployment Helm chart
+
   ```
   - Instead of hardcode Values I use syntax for dynamically Values : : {{.Values.<name-of-the-value>}}
 
@@ -353,6 +355,33 @@
     -- nindent 12 : Helm Template require correct indention inside deployment.yaml, and 'nindent 12' correctly formatted it at 12 space
   ```
 
+  **Dynamic ENV**
+  
+  - For 1 single ENV I can have container ENV like this :
+
+  ```
+  env:
+  - name : {{ .Values.containerEnvVar.key }}
+    value : {{ .Values.containerEnvVar.value }}
+  ```
+
+  - For working with List of something . In this case ENV, Helm has built function call Range
+
+  - Range is basically loop through a List give me a Element one by one
+
+  - Syntax for Range . This way I can access the key value pair that I define in the Container ENV var List
+
+  ```
+  env:
+  {{ - range .Values.containerEnvVars}}
+  - name: {{ .key }}
+    value: {{ .value | quote }}
+  {{ - end}}
+  
+  Note: Value ENV variable alway interpreted as strings . So I use a built-in function called quote and will use piping syntax |
+  
+  - Piping syntax in Linux : is the way to pass Output of 1 command to other Input of other command
+  ```
 
 
 
