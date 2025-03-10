@@ -344,6 +344,15 @@
 
   - Step 1 : To create Helm chart : `helm create <helm-chart-name>`
 
+  ```
+  - Instead of hardcode Values I use syntax for dynamically Values : : {{.Values.<name-of-the-value>}}
+
+  - This is a syntax to configura LivenessProbe and ReadinessProbe or anything need correct Yaml file : ``{{- toYaml.Values.livenessProbe | nindent 12}}``
+
+    -- toYaml : ensure the LivenessProbe or ReadinessProbe is properly formatted instead of being rendered as a single-line string
+    -- nindent 12 : Helm Template require correct indention inside deployment.yaml, and 'nindent 12' correctly formatted it at 12 space
+  ```
+
 
 
 
