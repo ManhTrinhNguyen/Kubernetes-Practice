@@ -331,7 +331,9 @@
 
   - Make sure the Ingress-controller Pod is Up, Running, and Ready : `kubectl wait --for=condition=ready pod --selector=app.kubernetes.io/component=controller --timeout=120s` . The Output is "pod/ingress-controller-ingress-nginx-controller-577754b989-fk8mh condition met" . That mean it is ready
 
-    - I am still don't know what happen to the Error . But I destroy the whole Cluster and create it again . Now I can create Ingress 
+    - I am still don't know what happen to the Error . But I destroy the whole Cluster and rent more CPU and deploy it again . Now I can create Ingress .
+   
+  
 
 
 
