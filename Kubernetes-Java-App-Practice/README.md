@@ -336,9 +336,13 @@
 
 ## Practice 8: Create Helm chart for Java App
 
+```
+  - Helm Chart is a bundle of Yaml file
 
+  - When I deploy an App with those Configuration Yaml file I can bundle it for the next use 
+```
 
-
+  - Step 1 : To create Helm chart : `helm create <helm-chart-name>`
 
 
 
