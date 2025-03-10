@@ -1,0 +1,18 @@
+# Deployment and Service
+appName: java-app
+replicasCount: 2
+imagePullSecrets: registry-name
+imageName: image
+containerPort: 8080
+servicePort: 8080
+
+regularEnvData: {}
+
+secretName: java-secret
+secretData: {}
+
+configName: java-config 
+configData: {}
+
+ingressName: java-ingress
+ingressHost: hostURL
