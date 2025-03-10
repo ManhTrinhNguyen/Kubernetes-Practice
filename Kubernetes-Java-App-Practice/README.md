@@ -592,6 +592,34 @@
     ingressHost: 45-79-231-7.ip.linodeusercontent.com
     ```
 
+  - Step 8 : After all Configuration Helm Chart Files and Values created . I am ready to deploy Java-app by using Helm Chart . I will Validate my helm Chart first 
+
+     - To Validate my Helm Chart is correct or have any issue : `helm install -f <values-file> <release-name> <chart-folder> --dry-run --debug`
+       
+     - If --dry-run show K8 manifest with a correct values, everything is working
+   
+     - To validate my specific Helm Chart I can use : `helm template -f <value> <chart-name>`
+   
+  - Step 9 : If everything is Fine I will install helm file : `helm install -f <values-file> <release-name> <chart-folder>`
+
+  - Step 10 : Check Error Occur .
+
+    - Sometime the Helm Chart might run correctly but somehow I miss configuration like (Miss Spelling, Wrong Credentials, missing Secret data or ....)
+
+    - If those Error occured I can use : `kubectl logs <pod-name>` to see what happen
+   
+    - Also I want to check the Pod by using : `kubectl describe pods <pod-name>` . In here I can see the Scheduler and Kublet logs . It will tell me specific what happen if Error occur
+   
+
+
+
+
+
+
+
+
+
+
 
 
 
