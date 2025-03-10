@@ -470,8 +470,75 @@
           {{- end }}
   ```  
 
+  - Step 3 : Create Service
 
+  ```
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name : {{ .Values.appName }}
+  spec:
+    selector:
+      app: {{ .Values.appName }}
+    ports: 
+    - protocol: TCP 
+      port: {{ .Values.servicePort }}
+      target: {{ .Values.containerPort }}
+  ```
+
+  - Step 4 : Create ConfigMap
+
+    - I also use Range to Loop the List of Configmap Data . In case I have multiple data
   
+  ```
+  apiVersion : v1
+  kind: ConfigMap 
+  metadata:
+    name: {{ .Values.configName }}
+  data:
+    {{- range $key, $value := .Values.configData }}
+    {{ $key }}: {{ $value | quote}}
+    {{- end }}
+  ```
+
+  - Step 5 : Create Secret
+
+    - I also use Range to Loop the List of Secret Data
   
+  ```
+  apiVersion: v1 
+  kind: Secret
+  metadata:
+    name: {{ .Values.secretName }}
+  type: Opaque
+  data: 
+    {{- range $key, $value := .Values.secretData }}
+    {{ $key }}: {{ $value }}
+    {{- end }}
+  ```
+
+  - Step 6 : Create Ingress
+
+  ```
+  apiVersion: networking.k8s.io/v1
+  kind: Ingress 
+  metadata: 
+    name: {{ .Values.ingressName }}
+  spec:
+    ingressClassName: nginx 
+    rules: 
+    - host: {{ .Values.ingressHost }}
+      http: 
+        paths: 
+        - path: / 
+          pathType: Prefix
+          backend:
+            service:
+              name: {{ .Values.appName }}
+              port:
+                number: {{ .Values.servicePort }}
+  ```
+
+
 
 
