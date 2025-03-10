@@ -443,7 +443,7 @@
         - name: {{ .Values.imagePullSecrets }}
         containers:
         - name : {{ .Values.appName }}
-          image: "{{ .Values.imageName }}:{{ .Values.imageVersion | toString }}"
+          image: "{{ .Values.imageName }}:{{ .Values.imageVersion | toString }}" # I use toString for imageVersion bcs in the Values file I set imageVersion: "4.0" if I set imageVersion: 4.0 with a double quote Helm will set value to be 4 (without .0) . 
           imagePullPolicy: Always
           ports: 
           - containerPort: {{ .Values.containerPort }}
@@ -538,6 +538,60 @@
               port:
                 number: {{ .Values.servicePort }}
   ```
+
+  - Step 7 : Create Values file (Deployment, Service, Ingress, Configmap, Secret)
+
+    **This is a custom Values file**
+    
+    ```
+    # Deployment and Service
+    appName: java-app
+    replicasCount: 2
+    imagePullSecrets: registry-name
+    imageName: image
+    containerPort: 8080
+    servicePort: 8080
+    
+    regularEnvData: {}
+    
+    secretName: java-secret
+    secretData: {}
+    
+    configName: java-config 
+    configData: {}
+    
+    ingressName: java-ingress
+    ingressHost: hostURL
+    ```
+
+    **This is a overwrite Values (Actual value I use for this project)**
+
+    ```
+    appName: java-app
+    replicasCount: 2
+    imagePullSecrets: docker-authenticate-secret
+    imageName: 565393037799.dkr.ecr.us-west-1.amazonaws.com/java-app
+    imageVersion: "4.0"
+    containerPort: 8080
+    
+    servicePort: 8080
+    
+    regularEnvData: {}
+    
+    secretName: java-secret
+    secretData: 
+      DB_USER: dGlt
+      DB_NAME: bXlfZGF0YWJhc2U=
+      DB_PWD: cGFzc3dvcmQ=
+    
+    configName: java-config 
+    configData: 
+      DB_SERVER: mysql-primary-0.mysql-primary-headless
+    
+    ingressName: java-ingress
+    ingressHost: 45-79-231-7.ip.linodeusercontent.com
+    ```
+
 
 
 
