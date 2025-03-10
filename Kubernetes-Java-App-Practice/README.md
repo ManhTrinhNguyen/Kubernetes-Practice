@@ -383,7 +383,36 @@
   - Piping syntax in Linux : is the way to pass Output of 1 command to other Input of other command
   ```
 
+  **Dynamic ENV in this project**
 
+  - In this project I have 3 Lists of Dynamic ENV : secretData list, configData list, regularData list . So I will configure like this :
+
+  ```
+  env:
+  # This is for regular Data
+  {{ - range .Values.regularEnvData }} 
+  - name: {{ .key }}
+    value: {{ .value | quote }}
+  {{ - end }}
+
+  # This is for secretData
+  {{ - range .Values.secretData }} 
+  - name: {{ .key }}
+    valueFrom: 
+      secretKeyRef: 
+        name: {{ .Values.secretName }}
+        key: {{ .key }}
+  {{ -end }}
+
+  # This is for configData
+  {{ - range .Values.configData }}
+  - name: {{ .key }}
+    valueFrom:
+      configMapKeyRef:
+        name: {{ .Values.configName }}
+        key: {{ .key }}
+  {{ -end }}
+  ```
 
 
   
