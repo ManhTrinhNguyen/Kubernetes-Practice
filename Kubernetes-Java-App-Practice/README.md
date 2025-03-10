@@ -293,7 +293,29 @@
   - Ingress is an abstract Component in the Cluster . It provide the Routing rules to manage the redirection . Manage which request redirect to which Pod
 ```
 
-  - Step 1 : Create Ingress yaml 
+  - Step 1 : Create Ingress yaml
+
+  ```
+  apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    name: java-ingress
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: 45-79-231-7.ip.linodeusercontent.com # I use this for host because I don't have a domain name . For test purposes
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: java-app-service
+              port:
+                number: 8080
+
+  ```
+
 
   !!! Error occur : When I try apply Ingress `kubectl apply -f yaml-config-files/java-ingress.yaml`
 
