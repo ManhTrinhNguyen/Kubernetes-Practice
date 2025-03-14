@@ -71,7 +71,15 @@
         - "password"
     ```
 
-  - Step 4
+  - Step 4 : After I have my Value file I can start to deploy MongoDB by using Helm
+
+    - To deploy : `helm install <release-name> --values <value-file> bitnami/mongodb`
+   
+    - To check pods : `kubectl get pods`
+   
+    - To check all : `kubectl get all`
+   
+    - To see pod logs if it is running okay : `kubectl logs <pod-name>`
    
      
 
