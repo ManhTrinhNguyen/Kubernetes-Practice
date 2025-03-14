@@ -52,7 +52,26 @@
 
   - Step 3 : Create Value File for MongoDB Helm Chart
 
-    - Bitnami Helm Chart provided default a Value File that I can override . I want to override those value to configure my Logic of my DB 
+    - Bitnami Helm Chart provided default a Value File that I can override . I want to override those value to configure my Logic of my DB
+   
+    ```
+    architecture: replicaset
+    replicaCount: 2
+
+    # I use Linode storage Class to automatically create Persistence Volume when it need
+    persistence:
+      storageClass: "linode-block-storage"
+    
+    # I define my MongoDB credentials here
+    auth: 
+      rootPassword: "rootpassword"
+      usernames: 
+        - "admin"
+      passwords: 
+        - "password"
+    ```
+
+  - Step 4
    
      
 
