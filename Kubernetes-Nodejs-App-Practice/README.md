@@ -16,4 +16,20 @@
    
   - Step 2 : Login to DockerHub : `echo "password" |docker login -u nguyenmanhtrinh --password-stdin`
 
-    - Bcs this is Docker Hub I don't need to provide a endpoint to login to my Dockerhub .  
+    - Bcs this is Docker Hub I don't need to provide a endpoint to login to my Dockerhub .
+   
+  - Step 3 : After Login Succeess I want to push Image to Docker Private Repo : docker push nguyenmanhtrinh/demo-app:js-app-1.0
+
+## Practice 1 : Create a Managed Cluster in Linode 
+
+  - Step 1 : Go to Linode sign up an Account
+
+  - Step 2 : After Signed In -> Go to Kubernetes -> Create Cluster
+  
+  - Step 3 : Choose name -> Choose Region -> Choose 3 Shared CPU
+  
+  - Step 4 : Connect kubectl to LKE so I can talk to my Cluster in my Local Machine export KUBECONFIG=js-app-cluster-config.yaml
+  
+  - js-app-cluster-config.yaml : Provided by Linode in the UI
+  
+  - Now I have Cluster running and I can talk to it via my Local Machine by using kubectl CLI
