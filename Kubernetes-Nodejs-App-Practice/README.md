@@ -80,7 +80,23 @@
     - To check all : `kubectl get all`
    
     - To see pod logs if it is running okay : `kubectl logs <pod-name>`
+
+## Deploy my Nodejs App 
+
+  - Step 1 : Create Docker Secret Component to pull Image from Private Repo
+
+    - First I login to Docker : `echo "Password" | docker login -u <username> --password-stdin`
    
+    - After login succeded . In the background it will create for me a credentials in : `.docker/config.json` . I can use this credentials for my K8 use to pull image
+   
+    - I will encode it into 64base : `cat .dockcer/config.json | base64` . Then I use this encode and put it in the Secret
+
+    - To apply Secret : `kubectl apply -f <secet-file>`
+
+  - Step 2 : Create Deployment file for my Node
+
+    - Replicas : 2
+    - imagePullSecrets :  <Docker-Secret-Component> 
      
 
 
