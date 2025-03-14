@@ -96,7 +96,8 @@
   - Step 2 : Create Deployment file for my Node
 
     - Replicas : 2
-    - imagePullSecrets :  <Docker-Secret-Component> 
+    - imagePullSecrets :  <Docker-Secret-Component>
+    - in containers level : `imagePolicy: Alway`
      
 
 
