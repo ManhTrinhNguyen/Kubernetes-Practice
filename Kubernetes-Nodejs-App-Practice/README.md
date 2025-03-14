@@ -33,3 +33,41 @@
   - js-app-cluster-config.yaml : Provided by Linode in the UI
   
   - Now I have Cluster running and I can talk to it via my Local Machine by using kubectl CLI
+
+## Practice 2 : Deploy MongoDB using Helm 
+
+  - Helm is a Kubernetes Package Manager . To package YAML file and distribute them in public and private Repo
+
+  - Helm Chart is a bundle of Yaml .
+
+  - Helm's own Public Repo at ArtifactHub : (https://artifacthub.io/)
+
+  - Step 1 : Install Helm in Mac : `brew install helm`
+
+  - Step 2 : Bitnami is a Provider of Helm Chart . They are also provide and maintain MongoDB Helm Chart in Public . I get Bitnami Repo : `helm repo add bitnami https://charts.bitnami.com/bitnami`
+
+  - To search for Bitnami MongoDB repo : `helm search repo bitnami | grep mongodb`
+
+  !!! Note When I execute Helm chart it will execute aganst my Cluster 
+
+  - Step 3 : Create Value File for MongoDB Helm Chart
+
+    - Bitnami Helm Chart provided default a Value File that I can override . I want to override those value to configure my Logic of my DB 
+   
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
