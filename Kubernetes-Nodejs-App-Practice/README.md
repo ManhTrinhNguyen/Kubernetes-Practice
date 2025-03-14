@@ -14,6 +14,6 @@
    
     -  js-app-1.0 : Tag name
    
-  - Step 2 : Login to DockerHub : `docker login`
+  - Step 2 : Login to DockerHub : `echo "password" |docker login -u nguyenmanhtrinh --password-stdin`
 
     - Bcs this is Docker Hub I don't need to provide a endpoint to login to my Dockerhub .  
