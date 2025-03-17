@@ -612,11 +612,11 @@
    
 ## Practice 9: Security Best Practice 
 
-  - 1 . Don't use expose NodePort for external Access . Instead use Cloud's Provider Load Balancer -> Ingress 
+  - Don't use expose NodePort for external Access . Instead use Cloud's Provider Load Balancer -> Ingress 
 
-  - 2. Pinned tag version for each Container Image
+  - Pinned tag version for each Container Image
      
-  - 3. Liveness Probe and RedinessProbe for each contrainer
+  - Liveness Probe and RedinessProbe for each contrainer
    
       - K8s manage its resources but not Container . Liveness Probe is the way to check that the Container running or crashing
    
@@ -624,9 +624,16 @@
    
   <img width="600" alt="Screenshot 2025-03-17 at 14 05 31" src="https://github.com/user-attachments/assets/0be0db16-9b28-4cd0-9675-519656d2f4e6" />
 
-  - 4. 
+  <img width="600" alt="Screenshot 2025-02-28 at 12 38 44" src="https://github.com/user-attachments/assets/c2e809fc-7d98-4e5f-a411-cb35f3098d83" />
 
-  
+  - Resoruces Request and Limit for each container :
+
+      -  Request : Make sure each conatiner has enough Resources to run
+   
+      -  Limit : Make sources it not exeed limit of resources allow to run . Bcs If application have bugs or issue it will get the most resources in the Nodes . 
+
+  <img width="600" alt="Screenshot 2025-03-17 at 14 13 26" src="https://github.com/user-attachments/assets/8719b1f1-a3b4-47cd-b808-876353e7e465" />
+
 
 
 
