@@ -612,11 +612,11 @@
    
 ## Practice 9: Security Best Practice 
 
-  - Don't use expose NodePort for external Access . Instead use Cloud's Provider Load Balancer -> Ingress 
+  - Number 1 : Don't use expose NodePort for external Access . Instead use Cloud's Provider Load Balancer -> Ingress 
 
-  - Pinned tag version for each Container Image
+  - Number 2 : Pinned tag version for each Container Image
      
-  - Liveness Probe and RedinessProbe for each contrainer
+  - Number 3 : Liveness Probe and RedinessProbe for each contrainer
    
       - K8s manage its resources but not Container . Liveness Probe is the way to check that the Container running or crashing
    
@@ -626,13 +626,38 @@
 
   <img width="600" alt="Screenshot 2025-02-28 at 12 38 44" src="https://github.com/user-attachments/assets/c2e809fc-7d98-4e5f-a411-cb35f3098d83" />
 
-  - Resoruces Request and Limit for each container :
+  - Number 4 : Resoruces Request and Limit for each container :
 
       -  Request : Make sure each conatiner has enough Resources to run
    
       -  Limit : Make sources it not exeed limit of resources allow to run . Bcs If application have bugs or issue it will get the most resources in the Nodes . 
 
   <img width="600" alt="Screenshot 2025-03-17 at 14 13 26" src="https://github.com/user-attachments/assets/8719b1f1-a3b4-47cd-b808-876353e7e465" />
+
+  - Number 5 : Make sure more than 1 Replica for Deployment : No downtime happen . Scale up and down fast .
+
+  - Number 6 : Using Labels
+
+  - Number 7 : Using Namespace to Isolate Resources
+
+      - In this project I use default Namespace but In real world I need to create name space `kubectl create ns <name>`
+
+
+  - Number 8 : Make sure Image has no vulnerability
+
+      - Manually scan Image `docker scout <image name>`
+   
+      - or I canc scan Image in pipeline
+   
+  - Number 9 : No root User for Container
+
+       -  Make sure that I don't have container running in my Cluster have root access capacility
+   
+       -  This exposed security bcs root user can do much more than regualr User
+   
+       - Most offcial Image run on Non-Root user
+   
+  - Number 10 : Update K8 to Latest Version      
 
 
 
