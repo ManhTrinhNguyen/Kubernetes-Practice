@@ -610,9 +610,11 @@
    
     - Also I want to check the Pod by using : `kubectl describe pods <pod-name>` . In here I can see the Scheduler and Kublet logs . It will tell me specific what happen if Error occur
    
+## Practice 9: Security Best Practice 
 
+  1 . Don't use expose NodePort for external Access . Instead use Cloud's Provider Load Balancer -> Ingress 
 
-
+  2. Use Label 
 
 
 
